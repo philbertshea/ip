@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Phil {
     public static void printOutput(String output) {
@@ -17,7 +18,7 @@ public class Phil {
 
         while (sc.hasNextLine()) {
             String input = sc.nextLine();
-            String[] inputArgs = input.split(" ");
+            List<String> inputArgs = Arrays.asList(input.split(" "));
             if (input.equals("bye")) {
                 printOutput("Bye. Hope to see you again soon.");
                 break;
@@ -26,7 +27,7 @@ public class Phil {
 
             } else if (input.startsWith("mark")) {
                 int numTasks = taskList.getNumberOfTasks();
-                if (inputArgs.length != 2 || !inputArgs[1].matches("\\d+") || Integer.parseInt(inputArgs[1]) > numTasks) {
+                if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+") || Integer.parseInt(inputArgs.get(1)) > numTasks) {
                     printOutput("Invalid input. To mark a task as done, say 'mark X' where X is the task to mark as done."
                             + "\nMake sure X is a valid positive integer from 1 to " + numTasks + " (number of tasks). "
                             + "\nFor example, calling 'mark 2' marks the second task as done."
@@ -38,7 +39,7 @@ public class Phil {
 
             } else if (input.startsWith("unmark")) {
                 int numTasks = taskList.getNumberOfTasks();
-                if (inputArgs.length != 2 || !inputArgs[1].matches("\\d+") || Integer.parseInt(inputArgs[1]) > numTasks) {
+                if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+") || Integer.parseInt(inputArgs.get(1)) > numTasks) {
                     printOutput("Invalid input. To mark a task as not done, say 'unmark X' where X is the task to mark as not done."
                             + "\nMake sure X is a valid positive integer from 1 to " + numTasks + " (number of tasks). "
                             + "\nFor example, calling 'unmark 2' marks the second task as not done."
@@ -49,27 +50,45 @@ public class Phil {
                 }
 
             } else if (input.startsWith("todo")) {
-                if (inputArgs.length < 2) {
+                if (inputArgs.size() < 2) {
                     printOutput("Invalid input. A Todo task requires a description of minimally one word."
                                 + "\n For example, 'todo read' creates the task 'read'.");
                 } else {
                     // The whole input except for the first word 'todo' is the task description
-                    String description = String.join(" ", Arrays.copyOfRange(inputArgs, 1, inputArgs.length));
+                    String description = String.join(" ", inputArgs.subList(1, inputArgs.size()));
                     printOutput(taskList.addTask(new Todo(description)));
                 }
             } else if (input.startsWith("deadline")) {
-                List<String> inputArgsList = Arrays.asList(inputArgs);
-                if (inputArgs.length < 2 || !inputArgsList.contains("/by")) {
+                if (inputArgs.size() < 2 || !inputArgs.contains("/by")) {
                     printOutput("Invalid input. A Deadline task requires a description AND a deadline, specified as a string after '/by'."
                             + "\n For example, 'deadline read /by Tuesday' creates the task 'read' with a deadline of 'Tuesday'.");
                 } else {
-                    int byIndex = inputArgsList.indexOf("/by");
-                    String description = String.join(" ", Arrays.copyOfRange(inputArgs, 1, byIndex));
-                    String byDate = String.join(" ", Arrays.copyOfRange(inputArgs, byIndex, inputArgs.length));
+                    int byIndex = inputArgs.indexOf("/by");
+                    String description = String.join(" ", inputArgs.subList(1, byIndex));
+                    String byDate = String.join(" ", inputArgs.subList(byIndex + 1, inputArgs.size()));
                     printOutput(taskList.addTask(new Deadline(description, byDate)));
                 }
+            } else if (input.startsWith("event")) {
+                if (inputArgs.size() < 2 || !inputArgs.contains("/from") || !inputArgs.contains("/to")) {
+                    printOutput("Invalid input. An Event task requires a description AND a from date, specified as a string after '/by'."
+                            + "\n And a to date, specified as a string after '/to'."
+                            + "\n For example, 'event reading /from Monday /to Tuesday' creates the event 'reading'"
+                            + "\n from 'Monday' to 'Tuesday'.");
+                } else {
+                    int fromIndex = inputArgs.indexOf("/from");
+                    int toIndex = inputArgs.indexOf("/to");
+                    String description = String.join(" ", inputArgs.subList(1, fromIndex));
+                    String fromDate = String.join(" ", inputArgs.subList(fromIndex + 1, toIndex));
+                    String toDate = String.join(" ", inputArgs.subList(toIndex + 1, inputArgs.size()));
+                    printOutput(taskList.addTask(new Event(description, fromDate, toDate)));
+                }
             } else {
-                printOutput("Invalid Input.");
+                printOutput("Invalid Input. These are the supported commands: \n"
+                + "'list' to see the list of tasks.\n"
+                + "'todo <some task>' to create a new Todo task. \n"
+                + "'deadline <some task> \\by <deadline-date>' to create a new Deadline task. \n"
+                + "'event <some task> \\from <start-date> \\end <end-date>' to create a new Event task. \n"
+                + "'bye' to end the conversation. \n");
             }
         }
     }
