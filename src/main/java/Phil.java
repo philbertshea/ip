@@ -39,6 +39,19 @@ public class Phil {
                     printOutput("Nice! I've marked this task as done: \n" + taskList[taskToMark - 1].toString());
                 }
 
+            } else if (input.startsWith("unmark")) {
+                String[] inputArgs = input.split(" ");
+                if (inputArgs.length != 2 || !inputArgs[1].matches("\\d+") || Integer.parseInt(inputArgs[1]) > taskCount) {
+                    printOutput("Invalid input. To mark a task as not done, say 'unmark X' where X is the task to mark as not done."
+                            + "\nMake sure X is a valid positive integer from 1 to " + taskCount + " (number of tasks). "
+                            + "\nFor example, calling 'unmark 2' marks the second task as not done."
+                            + "\nSay 'list' to see the tasks you have stored.");
+                } else {
+                    int taskToMark = Integer.parseInt(input.split(" ")[1]);
+                    taskList[taskToMark - 1].markNotDone();
+                    printOutput("OK, I've marked this task as not done yet: \n" + taskList[taskToMark - 1].toString());
+                }
+
             } else {
                 taskList[taskCount] = new Task(input);
                 taskCount++;
