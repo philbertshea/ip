@@ -1,3 +1,4 @@
+// Enums representing Command Types, to be used with InvalidArgumentException
 public enum CommandType {
     CREATE_TODO,
     CREATE_DEADLINE,
