@@ -17,6 +17,12 @@ public class TaskList {
                 + "\nNow you have " + this.getNumberOfTasks() + " tasks in the list.";
     }
 
+    public String deleteTask(int index) {
+        String resultStr = "Noted. I've removed this task: \n" + listOfTasks.get(index - 1).toString();
+        listOfTasks.remove(index - 1);
+        return resultStr + "\nNow you have " + this.getNumberOfTasks() + " tasks in the list.";
+    }
+
     public String markTaskAsDone(int index) {
         listOfTasks.get(index - 1).markDone();
         return "Nice! I've marked this task as done: \n" + listOfTasks.get(index - 1).toString();

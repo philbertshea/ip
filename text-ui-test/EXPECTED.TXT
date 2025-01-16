@@ -10,7 +10,7 @@ Tip: say 'list' to get a list of actions to do, say 'bye' to end the conversatio
 
 -----------------------------------------
 
-Got it! I've added this task:
+Got it! I've added this task: 
 [T][ ] read a book
 Now you have 1 tasks in the list.
 
@@ -19,7 +19,9 @@ Now you have 1 tasks in the list.
 
 -----------------------------------------
 
-Invalid input. A Deadline task requires a description AND a deadline, specified as a string after '/by'.
+Invalid arguments passed for creating tasks.
+Details: 
+A Deadline task requires a description AND a deadline, specified as a string after '/by'.
  For example, 'deadline read /by Tuesday' creates the task 'read' with a deadline of 'Tuesday'.
 
 -----------------------------------------
@@ -27,7 +29,7 @@ Invalid input. A Deadline task requires a description AND a deadline, specified 
 
 -----------------------------------------
 
-Got it! I've added this task:
+Got it! I've added this task: 
 [D][ ] do homework (by: tomorrow morning)
 Now you have 2 tasks in the list.
 
@@ -36,7 +38,9 @@ Now you have 2 tasks in the list.
 
 -----------------------------------------
 
-Invalid input. An Event task requires a description AND a from date, specified as a string after '/by'.
+Invalid arguments passed for creating tasks.
+Details: 
+An Event task requires a description AND a from date, specified as a string after '/by'.
  And a to date, specified as a string after '/to'.
  For example, 'event reading /from Monday /to Tuesday' creates the event 'reading'
  from 'Monday' to 'Tuesday'.
@@ -46,7 +50,7 @@ Invalid input. An Event task requires a description AND a from date, specified a
 
 -----------------------------------------
 
-Got it! I've added this task:
+Got it! I've added this task: 
 [E][ ] tutorial session (from: Monday 2pm to: Monday 5pm)
 Now you have 3 tasks in the list.
 
@@ -55,7 +59,7 @@ Now you have 3 tasks in the list.
 
 -----------------------------------------
 
-Here are the tasks in your list:
+Here are the tasks in your list: 
 1. [T][ ] read a book
 2. [D][ ] do homework (by: tomorrow morning)
 3. [E][ ] tutorial session (from: Monday 2pm to: Monday 5pm)
@@ -66,7 +70,7 @@ Here are the tasks in your list:
 
 -----------------------------------------
 
-Nice! I've marked this task as done:
+Nice! I've marked this task as done: 
 [T][X] read a book
 
 -----------------------------------------
@@ -74,7 +78,7 @@ Nice! I've marked this task as done:
 
 -----------------------------------------
 
-Nice! I've marked this task as done:
+Nice! I've marked this task as done: 
 [E][X] tutorial session (from: Monday 2pm to: Monday 5pm)
 
 -----------------------------------------
@@ -82,7 +86,7 @@ Nice! I've marked this task as done:
 
 -----------------------------------------
 
-OK, I've marked this task as not done:
+OK, I've marked this task as not done: 
 [E][ ] tutorial session (from: Monday 2pm to: Monday 5pm)
 
 -----------------------------------------
@@ -90,7 +94,7 @@ OK, I've marked this task as not done:
 
 -----------------------------------------
 
-Here are the tasks in your list:
+Here are the tasks in your list: 
 1. [T][X] read a book
 2. [D][ ] do homework (by: tomorrow morning)
 3. [E][ ] tutorial session (from: Monday 2pm to: Monday 5pm)
@@ -101,12 +105,13 @@ Here are the tasks in your list:
 
 -----------------------------------------
 
-Invalid Input. These are the supported commands:
+some incompatible command is not a valid command. 
+These are the supported commands: 
 'list' to see the list of tasks.
-'todo <some task>' to create a new Todo task.
-'deadline <some task> \by <deadline-date>' to create a new Deadline task.
-'event <some task> \from <start-date> \end <end-date>' to create a new Event task.
-'bye' to end the conversation.
+'todo <some task>' to create a new Todo task. 
+'deadline <some task> \by <deadline-date>' to create a new Deadline task. 
+'event <some task> \from <start-date> \end <end-date>' to create a new Event task. 
+'bye' to end the conversation. 
 
 
 -----------------------------------------
