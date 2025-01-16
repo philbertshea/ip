@@ -3,5 +3,6 @@ public enum CommandType {
     CREATE_DEADLINE,
     CREATE_EVENT,
     MARK_DONE,
-    MARK_UNDONE
+    MARK_UNDONE,
+    DELETE_TASK
 }

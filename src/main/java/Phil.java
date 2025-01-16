@@ -25,6 +25,13 @@ public class Phil {
                     break;
                 } else if (input.equals("list")) {
                     printOutput(taskList.toString());
+                } else if (input.startsWith("delete")) {
+                    if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+") || Integer.parseInt(inputArgs.get(1)) > numTasks) {
+                        throw new InvalidArgumentException(CommandType.DELETE_TASK, numTasks);
+                    } else {
+                        int taskToRemove = Integer.parseInt(input.split(" ")[1]);
+                        printOutput(taskList.deleteTask(taskToRemove));
+                    }
                 } else if (input.startsWith("mark")) {
                     if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+") || Integer.parseInt(inputArgs.get(1)) > numTasks) {
                         throw new InvalidArgumentException(CommandType.MARK_DONE, numTasks);

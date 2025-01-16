@@ -32,6 +32,11 @@ public class InvalidArgumentException extends PhilException {
                     + "\nMake sure X is a valid positive integer from 1 to " + numTasks + " (number of tasks). "
                     + "\nFor example, calling 'unmark 2' marks the second task as not done."
                     + "\nSay 'list' to see the tasks you have stored.";
+        } else if (commandType == CommandType.DELETE_TASK) {
+            this.explained_usage = "To delete a task, say 'delete X' where X is the task to remove."
+                    + "\nMake sure X is a valid positive integer from 1 to " + numTasks + " (number of tasks). "
+                    + "\nFor example, calling 'delete 2' deletes the second task."
+                    + "\nSay 'list' to see the tasks you have stored.";
         } else {
             this.explained_usage = "";
         }

@@ -6,6 +6,7 @@ public class InvalidCommandException extends PhilException {
                 + "'todo <some task>' to create a new Todo task. \n"
                 + "'deadline <some task> \\by <deadline-date>' to create a new Deadline task. \n"
                 + "'event <some task> \\from <start-date> \\end <end-date>' to create a new Event task. \n"
+                + "'delete <some task>' to delete a task. \n"
                 + "'bye' to end the conversation. \n");
     }
 }
