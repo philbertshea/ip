@@ -21,6 +21,7 @@ public class Phil {
                 break;
             } else if (input.equals("list")) {
                 StringBuilder listToPrint = new StringBuilder();
+                listToPrint.append("Here are the tasks in your list: \n");
                 for (int i = 0; i < taskCount; i++) {
                     listToPrint.append((i + 1)).append(". ").append(taskList[i].toString()).append("\n");
                 }
