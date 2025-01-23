@@ -6,16 +6,29 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/** Storage representing the loading and storing of data to disk.
+ *
+ */
 public class Storage {
 
     private Path dirPath;
     private Path dataPath;
 
+    /** Constructor of Storage object.
+     *
+     * @param dirPath directory path for storing data
+     * @param dataPath file path for storing data
+     */
     public Storage(String dirPath, String dataPath) {
         this.dirPath = Paths.get(dirPath);
         this.dataPath = Paths.get(dirPath, dataPath);
     }
 
+    /** Loads file specified at dirPath and datapath.
+     *
+     * @return task list obtained from loading file at datapath.
+     * @throws IOException if directory or file cannot be opened or other IO issues.
+     */
     public TaskList load() throws IOException {
         TaskList taskList = new TaskList();
         // Create folder 'data' and/or file 'phil.txt' if it does not exist
@@ -53,6 +66,11 @@ public class Storage {
         return taskList;
     }
 
+    /** Saves task list into a path
+     *
+     * @param taskList list of tasks to save.
+     * @throws IOException thrown if there are IO errors when saving.
+     */
     public void save(TaskList taskList) throws IOException {
         StringBuilder resultString = new StringBuilder();
         for (Task task : taskList.getListOfTasks()) {

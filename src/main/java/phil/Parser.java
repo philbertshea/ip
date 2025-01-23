@@ -3,15 +3,29 @@ package phil;
 import java.util.Arrays;
 import java.util.List;
 
+/** Parser which contains logic to process input strings passed in.
+ *
+ */
 public class Parser {
     private TaskList taskList;
     private Storage storage;
 
+    /** Constructor of Parser object.
+     *
+     * @param taskList list of tasks
+     * @param storage storage
+     */
     public Parser(TaskList taskList, Storage storage) {
         this.taskList = taskList;
         this.storage = storage;
     }
 
+    /** Takes in a String input, and returns the corresponding output based on the command.
+     *
+     * @param input input by user representing the command.
+     * @return output to print if command is valid.
+     * @throws PhilException to be thrown if command or arguments are not valid.
+     */
     public String processInput(String input) throws PhilException {
         List<String> inputArgs = Arrays.asList(input.split(" "));
         int numTasks = this.taskList.getNumberOfTasks();

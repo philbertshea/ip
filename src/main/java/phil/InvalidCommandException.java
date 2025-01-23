@@ -1,6 +1,15 @@
 package phil;
 
+/** Exception representing invalid commands passed when creating tasks.
+ * Where the first word of the input line is not a valid command.
+ *
+ */
 public class InvalidCommandException extends PhilException {
+
+    /** Constructor for InvalidCommandException.
+     *
+     * @param invalidCommand String representing first word of the command passed by the user.
+     */
     public InvalidCommandException(String invalidCommand) {
         super(invalidCommand + " is not a valid command. \n"
                 + "These are the supported commands: \n"
