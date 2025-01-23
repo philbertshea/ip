@@ -8,37 +8,41 @@ public class TaskList {
     }
 
     public int getNumberOfTasks() {
-        return listOfTasks.size();
+        return this.listOfTasks.size();
     }
 
     public String addTask(Task task) {
-        listOfTasks.add(task);
+        this.listOfTasks.add(task);
         return "Got it! I've added this task: \n" + task.toString()
                 + "\nNow you have " + this.getNumberOfTasks() + " tasks in the list.";
     }
 
     public String deleteTask(int index) {
-        String resultStr = "Noted. I've removed this task: \n" + listOfTasks.get(index - 1).toString();
-        listOfTasks.remove(index - 1);
+        String resultStr = "Noted. I've removed this task: \n" + this.listOfTasks.get(index - 1).toString();
+        this.listOfTasks.remove(index - 1);
         return resultStr + "\nNow you have " + this.getNumberOfTasks() + " tasks in the list.";
     }
 
     public String markTaskAsDone(int index) {
-        listOfTasks.get(index - 1).markDone();
-        return "Nice! I've marked this task as done: \n" + listOfTasks.get(index - 1).toString();
+        this.listOfTasks.get(index - 1).markDone();
+        return "Nice! I've marked this task as done: \n" + this.listOfTasks.get(index - 1).toString();
     }
 
     public String markTaskAsNotDone(int index) {
-        listOfTasks.get(index - 1).markNotDone();
-        return "OK, I've marked this task as not done: \n" + listOfTasks.get(index - 1).toString();
+        this.listOfTasks.get(index - 1).markNotDone();
+        return "OK, I've marked this task as not done: \n" + this.listOfTasks.get(index - 1).toString();
     }
 
     public String toString() {
         StringBuilder listToPrint = new StringBuilder();
         listToPrint.append("Here are the tasks in your list: \n");
-        for (int i = 0; i < listOfTasks.size(); i++) {
-            listToPrint.append((i + 1)).append(". ").append(listOfTasks.get(i).toString()).append("\n");
+        for (int i = 0; i < this.listOfTasks.size(); i++) {
+            listToPrint.append((i + 1)).append(". ").append(this.listOfTasks.get(i).toString()).append("\n");
         }
         return listToPrint.toString();
+    }
+
+    public List<Task> getListOfTasks() {
+        return this.listOfTasks;
     }
 }
