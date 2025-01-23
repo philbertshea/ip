@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/** Represents a Event task which has a description and a from-date and an end-date.
+/**
+ * Represents a Event task which has a description and a from-date and an end-date.
  *
  */
 public class Event extends Task {
@@ -15,7 +16,8 @@ public class Event extends Task {
     private final static DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
     private final static DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
 
-    /** Constructor for the Event object
+    /**
+     * Constructor for the Event object
      *
      * @param description String which describes the event task.
      * @param fromDate String which represents the start date of the task.
@@ -39,7 +41,8 @@ public class Event extends Task {
         }
     }
 
-    /** Returns the string representation of the event's from-date.
+    /**
+     * Returns the string representation of the event's from-date.
      * If a LocalDateTime was provided as the fromdate, it formats it based on the formatter provided.
      * Else, the String fromdate is returned.
      *
@@ -54,7 +57,8 @@ public class Event extends Task {
         }
     }
 
-    /** Returns the string representation of the event's to-date.
+    /**
+     * Returns the string representation of the event's to-date.
      * If a LocalDateTime was provided as the to-date, it formats it based on the formatter provided.
      * Else, the String todate is returned.
      *
@@ -69,7 +73,8 @@ public class Event extends Task {
         }
     }
 
-    /** Returns the string representation of Event object for printing when list is called.
+    /**
+     * Returns the string representation of Event object for printing when list is called.
      *
      * @return String representation of the Event object.
      */
@@ -80,7 +85,8 @@ public class Event extends Task {
                 + this.toDateToString(Event.outputFormatter) + ")";
     }
 
-    /** Returns String representation of Event object for use by Storage class.
+    /**
+     * Returns String representation of Event object for use by Storage class.
      *
      * @return String representation of the Event object to be stored and loaded by Storage class.
      */

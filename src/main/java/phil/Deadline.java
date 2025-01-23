@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/** Represents a Deadline task which has a description and a by-date.
+/**
+ * Represents a Deadline task which has a description and a by-date.
  *
  */
 public class Deadline extends Task {
@@ -13,7 +14,8 @@ public class Deadline extends Task {
     private final static DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
     private final static DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
 
-    /** Constructor for the Deadline object
+    /**
+     * Constructor for the Deadline object
      *
      * @param description String which describes the deadline task.
      * @param byDate String which represents the deadline of the task.
@@ -32,7 +34,8 @@ public class Deadline extends Task {
         }
     }
 
-    /** Returns the string representation of the deadline (by-date).
+    /**
+     * Returns the string representation of the deadline (by-date).
      * If a LocalDateTime was provided as the bydate, it formats it based on the formatter provided.
      * Else, the String bydate is returned.
      *
@@ -47,7 +50,8 @@ public class Deadline extends Task {
         }
     }
 
-    /** Returns the string representation of Deadline object for printing when list is called.
+    /**
+     * Returns the string representation of Deadline object for printing when list is called.
      *
      * @return String representation of the Deadline object.
      */
@@ -57,7 +61,8 @@ public class Deadline extends Task {
                 + this.byDateToString(Deadline.outputFormatter) + ")";
     }
 
-    /** Returns String representation of Deadline object for use by Storage class.
+    /**
+     * Returns String representation of Deadline object for use by Storage class.
      *
      * @return String representation of the Deadline object to be stored and loaded by Storage class.
      */

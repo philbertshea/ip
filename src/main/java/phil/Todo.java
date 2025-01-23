@@ -1,11 +1,13 @@
 package phil;
 
-/** Represents a Todo task which has a description.
+/**
+ * Represents a Todo task which has a description.
  *
  */
 public class Todo extends Task {
 
-    /** Constructor for the Event object
+    /**
+     * Constructor for the Event object
      *
      * @param description String which describes the event task.
      */
@@ -13,7 +15,8 @@ public class Todo extends Task {
         super(description);
     }
 
-    /** Returns the string representation of Todo object for printing when list is called.
+    /**
+     * Returns the string representation of Todo object for printing when list is called.
      *
      * @return String representation of the Todo object.
      */
@@ -22,7 +25,8 @@ public class Todo extends Task {
         return "[T]" + super.toString();
     }
 
-    /** Returns String representation of Todo object for use by Storage class.
+    /**
+     * Returns String representation of Todo object for use by Storage class.
      *
      * @return String representation of the Todo object to be stored and loaded by Storage class.
      */

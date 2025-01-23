@@ -1,11 +1,13 @@
 package phil;
 
-/** Exception which is a runtime exception, specially for Phil.
+/**
+ * Exception which is a runtime exception, specially for Phil.
  *
  */
 public class PhilException extends RuntimeException {
 
-    /** Constructor of PhilException.
+    /**
+     * Constructor of PhilException.
      *
      * @param message representing message of exception.
      */

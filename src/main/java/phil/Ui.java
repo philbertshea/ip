@@ -2,14 +2,16 @@ package phil;
 
 import java.util.Scanner;
 
-/** Ui representing the user interface for interacting with the chatbot
+/**
+ * Ui representing the user interface for interacting with the chatbot
  *
  */
 public class Ui {
 
     private Parser parser;
 
-    /** Constructor for the Ui object.
+    /**
+     * Constructor for the Ui object.
      *
      * @param parser Parser to be used by the Ui.
      */
@@ -17,7 +19,8 @@ public class Ui {
         this.parser = parser;
     }
 
-    /** Prints the given output with additional lines to separate the output.
+    /**
+     * Prints the given output with additional lines to separate the output.
      *
      * @param output output to be printed
      */
@@ -27,7 +30,8 @@ public class Ui {
         System.out.println("\n-----------------------------------------\n");
     }
 
-    /** Runs the user interface of the bot, including receiving input and printing output
+    /**
+     * Runs the user interface of the bot, including receiving input and printing output
      *
      */
     public void runBot() {

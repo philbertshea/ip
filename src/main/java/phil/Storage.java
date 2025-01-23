@@ -6,7 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-/** Storage representing the loading and storing of data to disk.
+/**
+ * Storage representing the loading and storing of data to disk.
  *
  */
 public class Storage {
@@ -14,7 +15,8 @@ public class Storage {
     private Path dirPath;
     private Path dataPath;
 
-    /** Constructor of Storage object.
+    /**
+     * Constructor of Storage object.
      *
      * @param dirPath directory path for storing data
      * @param dataPath file path for storing data
@@ -24,7 +26,8 @@ public class Storage {
         this.dataPath = Paths.get(dirPath, dataPath);
     }
 
-    /** Loads file specified at dirPath and datapath.
+    /**
+     * Loads file specified at dirPath and datapath.
      *
      * @return task list obtained from loading file at datapath.
      * @throws IOException if directory or file cannot be opened or other IO issues.
@@ -66,7 +69,8 @@ public class Storage {
         return taskList;
     }
 
-    /** Saves task list into a path
+    /**
+     * Saves task list into a path
      *
      * @param taskList list of tasks to save.
      * @throws IOException thrown if there are IO errors when saving.

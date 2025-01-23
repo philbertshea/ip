@@ -3,19 +3,22 @@ package phil;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Representation of a list of tasks.
+/**
+ * Representation of a list of tasks.
  */
 public class TaskList {
     private List<Task> listOfTasks;
 
-    /** Constructor of the TaskList object.
+    /**
+     * Constructor of the TaskList object.
      *
      */
     public TaskList() {
         this.listOfTasks = new ArrayList<Task>();
     }
 
-    /** Returns number of tasks.
+    /**
+     * Returns number of tasks.
      *
      * @return number of tasks stored.
      */
@@ -23,7 +26,8 @@ public class TaskList {
         return this.listOfTasks.size();
     }
 
-    /** Adds task to task list, and returns String output for success.
+    /**
+     * Adds task to task list, and returns String output for success.
      *
      * @param task Task to be added into task list.
      * @return String output upon adding task to task list.
@@ -34,7 +38,8 @@ public class TaskList {
                 + "\nNow you have " + this.getNumberOfTasks() + " tasks in the list.";
     }
 
-    /** Removes task from task list, and returns String output for success.
+    /**
+     * Removes task from task list, and returns String output for success.
      *
      * @param index index of task (1-indexed) to be removed from list.
      * @return String output upon removing task from task list.
@@ -45,7 +50,8 @@ public class TaskList {
         return resultStr + "\nNow you have " + this.getNumberOfTasks() + " tasks in the list.";
     }
 
-    /** Marks task as done on task list, and returns String output for success.
+    /**
+     * Marks task as done on task list, and returns String output for success.
      *
      * @param index index of task (1-indexed) to be marked as done on list.
      * @return String output upon marking task as done on list.
@@ -55,7 +61,8 @@ public class TaskList {
         return "Nice! I've marked this task as done: \n" + this.listOfTasks.get(index - 1).toString();
     }
 
-    /** Marks task as not done on task list, and returns String output for success.
+    /**
+     * Marks task as not done on task list, and returns String output for success.
      *
      * @param index index of task (1-indexed) to be marked as not done on list.
      * @return String output upon marking task as not done on list.
@@ -65,7 +72,8 @@ public class TaskList {
         return "OK, I've marked this task as not done: \n" + this.listOfTasks.get(index - 1).toString();
     }
 
-    /** Returns string representation of task list, used when list is called.
+    /**
+     * Returns string representation of task list, used when list is called.
      *
      * @return String representing the task list and each task.
      */
@@ -79,7 +87,8 @@ public class TaskList {
         return listToPrint.toString();
     }
 
-    /** Returns list of tasks.
+    /**
+     * Returns list of tasks.
      *
      * @return list of tasks stored.
      */
@@ -87,6 +96,12 @@ public class TaskList {
         return this.listOfTasks;
     }
 
+    /**
+     * Returns filtered tasks based on search term
+     *
+     * @param searchTerm String representing the search term to use
+     * @return String representing all filtered tasks
+     */
     public String filteredTasksToString(String searchTerm) {
         StringBuilder listToPrint = new StringBuilder();
         listToPrint.append("Here are the matching tasks in your list: \n");

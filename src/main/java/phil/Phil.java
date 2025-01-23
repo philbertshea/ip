@@ -1,11 +1,13 @@
 package phil;
 
-/** Main Class of Phil.
+/**
+ * Main Class of Phil.
  *
  */
 public class Phil {
 
-    /** Main Method to be executed to initialise the chatbot.
+    /**
+     * Main Method to be executed to initialise the chatbot.
      *
      */
     public static void main(String[] args) {
