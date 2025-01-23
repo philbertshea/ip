@@ -39,7 +39,7 @@ public class Deadline extends Task {
 
     @Override
     public String toLoadString() {
-        return "phil.Deadline - " + super.toLoadString() + " - " + this.byDateToString(Deadline.inputFormatter);
+        return "Deadline - " + super.toLoadString() + " - " + this.byDateToString(Deadline.inputFormatter);
     }
 
 }
