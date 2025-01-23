@@ -32,18 +32,28 @@ public class Phil {
             List<String> lines = Files.readAllLines(dataPath);
             for (String line : lines) {
                 String[] line_args = line.split(" - ");
-                System.out.println(line_args[0]);
                 if (line_args[0].equals("Todo")) {
-                    taskList.addTask(new Todo(line_args[1]));
+                    Task taskToAdd = new Todo(line_args[2]);
+                    if (line_args[1].equals("X")) {
+                        taskToAdd.markDone();
+                    }
+                    taskList.addTask(taskToAdd);
                 } else if (line_args[0].equals("Deadline")) {
-                    taskList.addTask(new Deadline(line_args[1], line_args[2]));
+                    Task taskToAdd = new Deadline(line_args[2], line_args[3]);
+                    if (line_args[1].equals("X")) {
+                        taskToAdd.markDone();
+                    }
+                    taskList.addTask(taskToAdd);
                 } else if (line_args[0].equals("Event")) {
-                    System.out.println("Hey");
-                    taskList.addTask(new Event(line_args[1], line_args[2], line_args[3]));
+                    Task taskToAdd = new Event(line_args[2], line_args[3], line_args[4]);
+                    if (line_args[1].equals("X")) {
+                        taskToAdd.markDone();
+                    }
+                    taskList.addTask(taskToAdd);
                 }
             }
-        } catch (IOException e) {
-            printOutput("IOException when accessing data history.");
+        } catch (Exception e) {
+            printOutput("Data not accessed: " + e.getMessage());
         }
 
         Scanner sc = new Scanner(System.in);
@@ -65,8 +75,8 @@ public class Phil {
                         }
                         Files.writeString(dataPath, resultString.toString());
 
-                    } catch (IOException e) {
-                        printOutput("IOException when saving data history.");
+                    } catch (Exception e) {
+                        printOutput("Data not saved: " + e.getMessage());
                     }
                     printOutput("Bye. Hope to see you again soon.");
                     break;

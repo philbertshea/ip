@@ -25,6 +25,6 @@ public abstract class Task {
     }
 
     public String toLoadString() {
-        return this.description;
+        return this.getStatusIcon() + " - " + this.description;
     }
 }
