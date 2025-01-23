@@ -1,10 +1,15 @@
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 
 public class Phil {
     public static void printOutput(String output) {
@@ -119,7 +124,10 @@ public class Phil {
                         int byIndex = inputArgs.indexOf("/by");
                         String description = String.join(" ", inputArgs.subList(1, byIndex));
                         String byDate = String.join(" ", inputArgs.subList(byIndex + 1, inputArgs.size()));
+
                         printOutput(taskList.addTask(new Deadline(description, byDate)));
+
+
                     }
                 } else if (input.startsWith("event")) {
                     if (inputArgs.size() < 2 || !inputArgs.contains("/from") || !inputArgs.contains("/to")) {
@@ -131,6 +139,7 @@ public class Phil {
                         String fromDate = String.join(" ", inputArgs.subList(fromIndex + 1, toIndex));
                         String toDate = String.join(" ", inputArgs.subList(toIndex + 1, inputArgs.size()));
                         printOutput(taskList.addTask(new Event(description, fromDate, toDate)));
+
                     }
                 } else {
                     throw new InvalidCommandException(input);
