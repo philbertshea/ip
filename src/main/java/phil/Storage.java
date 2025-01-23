@@ -30,19 +30,19 @@ public class Storage {
         List<String> lines = Files.readAllLines(this.dataPath);
         for (String line : lines) {
             String[] line_args = line.split(" - ");
-            if (line_args[0].equals("phil.Todo")) {
+            if (line_args[0].equals("Todo")) {
                 Task taskToAdd = new Todo(line_args[2]);
                 if (line_args[1].equals("X")) {
                     taskToAdd.markDone();
                 }
                 taskList.addTask(taskToAdd);
-            } else if (line_args[0].equals("phil.Deadline")) {
+            } else if (line_args[0].equals("Deadline")) {
                 Task taskToAdd = new Deadline(line_args[2], line_args[3]);
                 if (line_args[1].equals("X")) {
                     taskToAdd.markDone();
                 }
                 taskList.addTask(taskToAdd);
-            } else if (line_args[0].equals("phil.Event")) {
+            } else if (line_args[0].equals("Event")) {
                 Task taskToAdd = new Event(line_args[2], line_args[3], line_args[4]);
                 if (line_args[1].equals("X")) {
                     taskToAdd.markDone();

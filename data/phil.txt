@@ -1,4 +1,4 @@
-phil.Todo - X - hello
-phil.Deadline -   - read - 12/1/2022 1300
-phil.Deadline -   - read a book - 12/20/2024 1000
-phil.Event - X - read - 01/5/2023 1045 - tomorrow
+Todo - X - hello
+Deadline -   - read - 12/1/2022 1300
+Deadline -   - read a book - 12/20/2024 1000
+Event - X - read - 01/5/2023 1045 - tomorrow

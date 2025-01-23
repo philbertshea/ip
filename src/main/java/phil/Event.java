@@ -54,6 +54,6 @@ public class Event extends Task {
 
     @Override
     public String toLoadString() {
-        return "phil.Event - " + super.toLoadString() + " - " + this.fromDateToString(Event.inputFormatter) + " - " + this.toDateToString(Event.inputFormatter);
+        return "Event - " + super.toLoadString() + " - " + this.fromDateToString(Event.inputFormatter) + " - " + this.toDateToString(Event.inputFormatter);
     }
 }

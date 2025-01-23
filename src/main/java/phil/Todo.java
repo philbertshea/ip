@@ -12,6 +12,6 @@ public class Todo extends Task {
 
     @Override
     public String toLoadString() {
-        return "phil.Todo - " + super.toLoadString();
+        return "Todo - " + super.toLoadString();
     }
 }
