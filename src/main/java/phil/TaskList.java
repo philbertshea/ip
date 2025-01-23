@@ -47,4 +47,18 @@ public class TaskList {
     public List<Task> getListOfTasks() {
         return this.listOfTasks;
     }
+
+    public String filteredTasksToString(String searchTerm) {
+        StringBuilder listToPrint = new StringBuilder();
+        listToPrint.append("Here are the matching tasks in your list: \n");
+        int count = 0;
+        for (int i = 0; i < this.listOfTasks.size(); i++) {
+            Task task = this.listOfTasks.get(i);
+            if (task.descContains(searchTerm)) {
+                count = count + 1;
+                listToPrint.append(count).append(". ").append(task.toString()).append("\n");
+            }
+        }
+        return listToPrint.toString();
+    }
 }

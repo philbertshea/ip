@@ -77,6 +77,14 @@ public class Parser {
                 return this.taskList.addTask(new Event(description, fromDate, toDate));
 
             }
+        } else if (input.startsWith("find")) {
+            if (inputArgs.size() < 2) {
+                throw new InvalidArgumentException(CommandType.CREATE_TODO);
+            } else {
+                // The whole input except for the first word 'find' is the task description
+                String searchTerm = String.join(" ", inputArgs.subList(1, inputArgs.size()));
+                return this.taskList.filteredTasksToString(searchTerm);
+            }
         } else {
             throw new InvalidCommandException(input);
         }
