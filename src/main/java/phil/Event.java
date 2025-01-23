@@ -49,11 +49,15 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + this.fromDateToString(Event.outputFormatter) + " to: " + this.toDateToString(Event.outputFormatter) + ")";
+        return "[E]" + super.toString() + " (from: "
+                + this.fromDateToString(Event.outputFormatter) + " to: "
+                + this.toDateToString(Event.outputFormatter) + ")";
     }
 
     @Override
     public String toLoadString() {
-        return "Event - " + super.toLoadString() + " - " + this.fromDateToString(Event.inputFormatter) + " - " + this.toDateToString(Event.inputFormatter);
+        return "Event - " + super.toLoadString() + " - "
+                + this.fromDateToString(Event.inputFormatter) + " - "
+                + this.toDateToString(Event.inputFormatter);
     }
 }
