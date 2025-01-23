@@ -1,6 +1,10 @@
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.Files;
 
 public class Phil {
     public static void printOutput(String output) {
@@ -10,7 +14,48 @@ public class Phil {
     }
 
     public static void main(String[] args) {
+
         TaskList taskList = new TaskList();
+
+        try {
+            // Create folder 'data' and/or file 'phil.txt' if it does not exist
+            Path dirPath = Paths.get("data");
+            if (!Files.exists(dirPath)) {
+                Files.createDirectory(dirPath);
+            }
+            Path dataPath = Paths.get("data", "phil.txt");
+            if (!Files.exists(dataPath)) {
+                Files.createFile(dataPath);
+            }
+
+            // Load data from 'phil.txt'
+            List<String> lines = Files.readAllLines(dataPath);
+            for (String line : lines) {
+                String[] line_args = line.split(" - ");
+                if (line_args[0].equals("Todo")) {
+                    Task taskToAdd = new Todo(line_args[2]);
+                    if (line_args[1].equals("X")) {
+                        taskToAdd.markDone();
+                    }
+                    taskList.addTask(taskToAdd);
+                } else if (line_args[0].equals("Deadline")) {
+                    Task taskToAdd = new Deadline(line_args[2], line_args[3]);
+                    if (line_args[1].equals("X")) {
+                        taskToAdd.markDone();
+                    }
+                    taskList.addTask(taskToAdd);
+                } else if (line_args[0].equals("Event")) {
+                    Task taskToAdd = new Event(line_args[2], line_args[3], line_args[4]);
+                    if (line_args[1].equals("X")) {
+                        taskToAdd.markDone();
+                    }
+                    taskList.addTask(taskToAdd);
+                }
+            }
+        } catch (Exception e) {
+            printOutput("Data not accessed: " + e.getMessage());
+        }
+
         Scanner sc = new Scanner(System.in);
         printOutput("Hello. I'm Phil.\nWhat can I do for you?" +
                     "\nTip: say 'list' to get a list of actions to do, say 'bye' to end the conversation.");
@@ -21,6 +66,18 @@ public class Phil {
                 List<String> inputArgs = Arrays.asList(input.split(" "));
                 int numTasks = taskList.getNumberOfTasks();
                 if (input.equals("bye")) {
+
+                    try {
+                        Path dataPath = Paths.get("data", "phil.txt");
+                        StringBuilder resultString = new StringBuilder();
+                        for (Task task : taskList.getListOfTasks()) {
+                            resultString.append(task.toLoadString()).append("\n");
+                        }
+                        Files.writeString(dataPath, resultString.toString());
+
+                    } catch (Exception e) {
+                        printOutput("Data not saved: " + e.getMessage());
+                    }
                     printOutput("Bye. Hope to see you again soon.");
                     break;
                 } else if (input.equals("list")) {
