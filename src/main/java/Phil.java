@@ -1,14 +1,9 @@
-import java.io.IOException;
-import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 
 public class Phil {
@@ -20,45 +15,13 @@ public class Phil {
 
     public static void main(String[] args) {
 
-        TaskList taskList = new TaskList();
-
+        TaskList taskList;
+        Storage storage = new Storage("data", "phil.txt");
         try {
-            // Create folder 'data' and/or file 'phil.txt' if it does not exist
-            Path dirPath = Paths.get("data");
-            if (!Files.exists(dirPath)) {
-                Files.createDirectory(dirPath);
-            }
-            Path dataPath = Paths.get("data", "phil.txt");
-            if (!Files.exists(dataPath)) {
-                Files.createFile(dataPath);
-            }
-
-            // Load data from 'phil.txt'
-            List<String> lines = Files.readAllLines(dataPath);
-            for (String line : lines) {
-                String[] line_args = line.split(" - ");
-                if (line_args[0].equals("Todo")) {
-                    Task taskToAdd = new Todo(line_args[2]);
-                    if (line_args[1].equals("X")) {
-                        taskToAdd.markDone();
-                    }
-                    taskList.addTask(taskToAdd);
-                } else if (line_args[0].equals("Deadline")) {
-                    Task taskToAdd = new Deadline(line_args[2], line_args[3]);
-                    if (line_args[1].equals("X")) {
-                        taskToAdd.markDone();
-                    }
-                    taskList.addTask(taskToAdd);
-                } else if (line_args[0].equals("Event")) {
-                    Task taskToAdd = new Event(line_args[2], line_args[3], line_args[4]);
-                    if (line_args[1].equals("X")) {
-                        taskToAdd.markDone();
-                    }
-                    taskList.addTask(taskToAdd);
-                }
-            }
+            taskList = storage.load();
         } catch (Exception e) {
-            printOutput("Data not accessed: " + e.getMessage());
+            taskList = new TaskList();
+            printOutput("Error when loading tasks. Not loaded. \n" + e.getMessage());
         }
 
         Scanner sc = new Scanner(System.in);
@@ -71,15 +34,8 @@ public class Phil {
                 List<String> inputArgs = Arrays.asList(input.split(" "));
                 int numTasks = taskList.getNumberOfTasks();
                 if (input.equals("bye")) {
-
                     try {
-                        Path dataPath = Paths.get("data", "phil.txt");
-                        StringBuilder resultString = new StringBuilder();
-                        for (Task task : taskList.getListOfTasks()) {
-                            resultString.append(task.toLoadString()).append("\n");
-                        }
-                        Files.writeString(dataPath, resultString.toString());
-
+                        storage.save(taskList);
                     } catch (Exception e) {
                         printOutput("Data not saved: " + e.getMessage());
                     }
@@ -124,10 +80,7 @@ public class Phil {
                         int byIndex = inputArgs.indexOf("/by");
                         String description = String.join(" ", inputArgs.subList(1, byIndex));
                         String byDate = String.join(" ", inputArgs.subList(byIndex + 1, inputArgs.size()));
-
                         printOutput(taskList.addTask(new Deadline(description, byDate)));
-
-
                     }
                 } else if (input.startsWith("event")) {
                     if (inputArgs.size() < 2 || !inputArgs.contains("/from") || !inputArgs.contains("/to")) {
