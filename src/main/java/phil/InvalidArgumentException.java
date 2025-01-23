@@ -16,7 +16,8 @@ public class InvalidArgumentException extends PhilException {
             this.explained_usage = "A phil.Todo task requires a description of minimally one word."
                     + "\n For example, 'todo read' creates the task 'read'.";
         } else if (commandType == CommandType.CREATE_DEADLINE) {
-            this.explained_usage = "A phil.Deadline task requires a description AND a deadline, specified as a string after '/by'."
+            this.explained_usage = "A phil.Deadline task requires a description AND a deadline, "
+                    + "specified as a string after '/by'."
                     + "\n For example, 'deadline read /by Tuesday' creates the task 'read' with a deadline of 'Tuesday'.";
         } else if (commandType == CommandType.CREATE_EVENT) {
             this.explained_usage = "An phil.Event task requires a description AND a from date, specified as a string after '/by'."

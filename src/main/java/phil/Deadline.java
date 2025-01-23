@@ -53,7 +53,8 @@ public class Deadline extends Task {
      */
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.byDateToString(Deadline.outputFormatter) + ")";
+        return "[D]" + super.toString() + " (by: "
+                + this.byDateToString(Deadline.outputFormatter) + ")";
     }
 
     /** Returns String representation of Deadline object for use by Storage class.
@@ -62,7 +63,8 @@ public class Deadline extends Task {
      */
     @Override
     public String toLoadString() {
-        return "Deadline - " + super.toLoadString() + " - " + this.byDateToString(Deadline.inputFormatter);
+        return "Deadline - " + super.toLoadString() + " - "
+                + this.byDateToString(Deadline.inputFormatter);
     }
 
 }
