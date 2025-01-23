@@ -53,4 +53,8 @@ public abstract class Task {
     public String toLoadString() {
         return this.getStatusIcon() + " - " + this.description;
     }
+
+    public boolean descContains(String str) {
+        return this.description.contains(str);
+    }
 }
