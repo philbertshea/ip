@@ -1,15 +1,17 @@
+package phil;
+
 public class InvalidArgumentException extends PhilException {
     private String explained_usage;
     public InvalidArgumentException(CommandType commandType) {
         super("Invalid arguments passed for creating tasks.");
         if (commandType == CommandType.CREATE_TODO) {
-            this.explained_usage = "A Todo task requires a description of minimally one word."
+            this.explained_usage = "A phil.Todo task requires a description of minimally one word."
                     + "\n For example, 'todo read' creates the task 'read'.";
         } else if (commandType == CommandType.CREATE_DEADLINE) {
-            this.explained_usage = "A Deadline task requires a description AND a deadline, specified as a string after '/by'."
+            this.explained_usage = "A phil.Deadline task requires a description AND a deadline, specified as a string after '/by'."
                     + "\n For example, 'deadline read /by Tuesday' creates the task 'read' with a deadline of 'Tuesday'.";
         } else if (commandType == CommandType.CREATE_EVENT) {
-            this.explained_usage = "An Event task requires a description AND a from date, specified as a string after '/by'."
+            this.explained_usage = "An phil.Event task requires a description AND a from date, specified as a string after '/by'."
                     + "\n And a to date, specified as a string after '/to'."
                     + "\n For example, 'event reading /from Monday /to Tuesday' creates the event 'reading'"
                     + "\n from 'Monday' to 'Tuesday'.";

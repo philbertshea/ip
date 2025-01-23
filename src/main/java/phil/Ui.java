@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.List;
+package phil;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -18,7 +18,7 @@ public class Ui {
 
     public void runBot() {
         Scanner sc = new Scanner(System.in);
-        printOutput("Hello. I'm Phil.\nWhat can I do for you?" +
+        printOutput("Hello. I'm phil.Phil.\nWhat can I do for you?" +
                 "\nTip: say 'list' to get a list of actions to do, say 'bye' to end the conversation.");
 
         while (sc.hasNextLine()) {
