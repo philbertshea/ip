@@ -1,3 +1,5 @@
+package phil;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -37,7 +39,7 @@ public class Deadline extends Task {
 
     @Override
     public String toLoadString() {
-        return "Deadline - " + super.toLoadString() + " - " + this.byDateToString(Deadline.inputFormatter);
+        return "phil.Deadline - " + super.toLoadString() + " - " + this.byDateToString(Deadline.inputFormatter);
     }
 
 }

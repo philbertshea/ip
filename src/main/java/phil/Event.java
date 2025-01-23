@@ -1,3 +1,5 @@
+package phil;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -52,6 +54,6 @@ public class Event extends Task {
 
     @Override
     public String toLoadString() {
-        return "Event - " + super.toLoadString() + " - " + this.fromDateToString(Event.inputFormatter) + " - " + this.toDateToString(Event.inputFormatter);
+        return "phil.Event - " + super.toLoadString() + " - " + this.fromDateToString(Event.inputFormatter) + " - " + this.toDateToString(Event.inputFormatter);
     }
 }
