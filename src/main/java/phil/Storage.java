@@ -45,22 +45,22 @@ public class Storage {
         // Load data from 'phil.txt'
         List<String> lines = Files.readAllLines(this.dataPath);
         for (String line : lines) {
-            String[] line_args = line.split(" - ");
-            if (line_args[0].equals("Todo")) {
-                Task taskToAdd = new Todo(line_args[2]);
-                if (line_args[1].equals("X")) {
+            String[] lineArgs = line.split(" - ");
+            if (lineArgs[0].equals("Todo")) {
+                Task taskToAdd = new Todo(lineArgs[2]);
+                if (lineArgs[1].equals("X")) {
                     taskToAdd.markDone();
                 }
                 taskList.addTask(taskToAdd);
-            } else if (line_args[0].equals("Deadline")) {
-                Task taskToAdd = new Deadline(line_args[2], line_args[3]);
-                if (line_args[1].equals("X")) {
+            } else if (lineArgs[0].equals("Deadline")) {
+                Task taskToAdd = new Deadline(lineArgs[2], lineArgs[3]);
+                if (lineArgs[1].equals("X")) {
                     taskToAdd.markDone();
                 }
                 taskList.addTask(taskToAdd);
-            } else if (line_args[0].equals("Event")) {
-                Task taskToAdd = new Event(line_args[2], line_args[3], line_args[4]);
-                if (line_args[1].equals("X")) {
+            } else if (lineArgs[0].equals("Event")) {
+                Task taskToAdd = new Event(lineArgs[2], lineArgs[3], lineArgs[4]);
+                if (lineArgs[1].equals("X")) {
                     taskToAdd.markDone();
                 }
                 taskList.addTask(taskToAdd);

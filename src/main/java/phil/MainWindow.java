@@ -1,13 +1,18 @@
 package phil;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Represents an AnchorPane that is the main window.
+ * The main window stores a scrollpane, a vbox for the dialogs,
+ * and a textfield for storing the user input.
+ */
 public class MainWindow extends AnchorPane {
     @FXML
     private ScrollPane scrollPane;
@@ -24,11 +29,19 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
+    /**
+     * Initialise the scrollpane to scroll to the height of the dialog container.
+     */
     @FXML
     private void initialize() {
         this.scrollPane.vvalueProperty().bind(this.dialogContainer.heightProperty());
     }
 
+    /**
+     * Set the Phil attribute to the Phil instance passed.
+     *
+     * @param phil Phil instance passed.
+     */
     public void setPhil(Phil phil) {
         this.phil = phil;
     }
@@ -36,6 +49,11 @@ public class MainWindow extends AnchorPane {
     // Don't forget to add the '@FXML' tag for the .fxml file to recognise this function
     // The FXML tag exposes the function to fxml file without needing public access
     // Referenced in TextField onAction
+
+    /**
+     * Add the corresponding user and duke dialogs once Action is detected
+     * at the TextField or the sendButton (in /view/DialogBox.fxml)
+     */
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();

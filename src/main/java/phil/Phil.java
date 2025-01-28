@@ -1,9 +1,17 @@
 package phil;
 
+/**
+ * Represents the Phil instance that stores the parser
+ * and a function to get the response from parser based on user input.
+ */
 public class Phil {
 
     private Parser parser;
 
+    /**
+     * Constructor of Phil instance.
+     *
+     */
     public Phil() {
         TaskList taskList;
         Storage storage = new Storage("data", "phil.txt");
@@ -18,6 +26,12 @@ public class Phil {
         this.parser = new Parser(taskList, storage);
     }
 
+    /**
+     * Return response from parser based on input.
+     *
+     * @param input String passed in as input
+     * @return String response to be returned by parser
+     */
     public String getResponse(String input) {
         try {
             return this.parser.processInput(input);

@@ -36,8 +36,9 @@ public class Ui {
      */
     public void runBot() {
         Scanner sc = new Scanner(System.in);
-        printOutput("Hello. I'm phil.Phil.\nWhat can I do for you?" +
-                "\nTip: say 'list' to get a list of actions to do, say 'bye' to end the conversation.");
+        printOutput("Hello. I'm phil.Phil.\nWhat can I do for you?"
+                    + "\nTip: say 'list' to get a list of actions to do, "
+                    + "say 'bye' to end the conversation.");
 
         while (sc.hasNextLine()) {
             try {
