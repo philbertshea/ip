@@ -1,13 +1,20 @@
 package phil;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
+
+/**
+ * Represents Testing Class for Todo Class.
+ */
 public class TodoTest {
-    
+
+    /**
+     * Test the toString method of the Todo class.
+     */
     @Test
-    public void toStringTest(){
+    public void toString_newTodo_correctStringOutput() {
         Todo todo = new Todo("read a book");
         // to String test
         assertEquals("[T][ ] read a book", todo.toString());
@@ -17,8 +24,11 @@ public class TodoTest {
         assertEquals("[T][ ] read a book", todo.toString());
     }
 
+    /**
+     * Test the toLoadString method of the Todo class.
+     */
     @Test
-    public void toLoadStringTest(){
+    public void toLoadString_newTodo_correctStringOutput() {
         Todo todo = new Todo("read a book");
         // to String test
         assertEquals("Todo -   - read a book", todo.toLoadString());

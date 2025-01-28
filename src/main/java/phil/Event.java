@@ -9,12 +9,12 @@ import java.time.format.DateTimeParseException;
  *
  */
 public class Event extends Task {
+    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
+    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
     private String fromDate;
     private String toDate;
     private LocalDateTime fromDateInDateTime;
     private LocalDateTime toDateInDateTime;
-    private final static DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
-    private final static DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
 
     /**
      * Constructor for the Event object

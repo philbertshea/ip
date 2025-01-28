@@ -9,10 +9,10 @@ import java.time.format.DateTimeParseException;
  *
  */
 public class Deadline extends Task {
+    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
+    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
     private String byDate;
     private LocalDateTime byDateInDateTime;
-    private final static DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
-    private final static DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
 
     /**
      * Constructor for the Deadline object
@@ -22,7 +22,7 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String byDate) {
         super(description);
-// Check if byDate is in datetime format, and parse it as datetime if so.
+        // Check if byDate is in datetime format, and parse it as datetime if so.
         try {
             LocalDateTime byDateInDateTime = LocalDateTime.parse(byDate, Deadline.inputFormatter);
             this.byDate = null;
