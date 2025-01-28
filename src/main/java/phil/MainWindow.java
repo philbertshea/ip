@@ -1,6 +1,8 @@
 package phil;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -58,8 +60,10 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         DialogBox userDialog = new DialogBox(input, userImage);
-        DialogBox dukeDialog = new DialogBox(phil.getResponse(input), dukeImage);
-        dialogContainer.getChildren().addAll(userDialog, dukeDialog);
+        DialogBox philDialog = new DialogBox(phil.getResponse(input), dukeImage);
+        philDialog.flip();
+
+        dialogContainer.getChildren().addAll(userDialog, philDialog);
         if (input.equals("bye")) {
             // Code adapted from a.b on https://stackoverflow.com/questions/13567019/close-fxml-window-by-code-javafx
             Stage stage = (Stage) this.dialogContainer.getScene().getWindow();
