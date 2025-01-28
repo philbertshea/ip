@@ -1,7 +1,7 @@
 
 -----------------------------------------
 
-Hello. I'm phil.Phil.
+Hello. I'm phil.PhilTextUI.
 What can I do for you?
 Tip: say 'list' to get a list of actions to do, say 'bye' to end the conversation.
 
