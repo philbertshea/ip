@@ -1,10 +1,17 @@
 package phil;
 
-public class Phil {
+/**
+ * Main Class of Phil.
+ *
+ */
+public class PhilTextUI {
 
-    private Parser parser;
+    /**
+     * Main Method to be executed to initialise the chatbot.
+     *
+     */
+    public static void main(String[] args) {
 
-    public Phil() {
         TaskList taskList;
         Storage storage = new Storage("data", "phil.txt");
         String loadMessage = "";
@@ -15,14 +22,10 @@ public class Phil {
             taskList = new TaskList();
             loadMessage += "Error when loading tasks. Not loaded. \n" + e.getMessage();
         }
-        this.parser = new Parser(taskList, storage);
-    }
+        Parser parser = new Parser(taskList, storage);
+        Ui ui = new Ui(parser);
+        ui.printOutput(loadMessage);
 
-    public String getResponse(String input) {
-        try {
-            return this.parser.processInput(input);
-        } catch (PhilException e) {
-            return e.getMessage();
-        }
+        ui.runBot();
     }
 }
