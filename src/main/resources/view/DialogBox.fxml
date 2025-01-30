@@ -16,7 +16,11 @@
                text="Label"
                wrapText="true"
                minHeight="-Infinity"
-               style="-fx-padding: 0 10 0 10;"/>
+               style="-fx-padding: 0 10 0 10;
+                      -fx-background-color: #FFD65A;
+                      -fx-border-width: 2;
+                      -fx-border-color: #000000;
+                      -fx-border-radius: 0 10 0 10"/>
         <ImageView fx:id="displayPicture"
                    fitHeight="99.0" fitWidth="99.0"
                    pickOnBounds="true"
