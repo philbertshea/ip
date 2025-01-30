@@ -44,6 +44,11 @@ public class DialogBox extends HBox {
             e.printStackTrace();
         }
         dialog.setText(text);
+        if (text.length() > 50) {
+            dialog.setStyle(dialog.getStyle() + "-fx-font-size: " + 15);
+        } else {
+            dialog.setStyle(dialog.getStyle() + "-fx-font-size: " + 20);
+        }
         displayPicture.setImage(img);
         displayPicture.setFitHeight(pictureHeight);
         displayPicture.setFitWidth(pictureHeight);
