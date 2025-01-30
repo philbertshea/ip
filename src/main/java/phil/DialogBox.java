@@ -32,8 +32,9 @@ public class DialogBox extends HBox {
      *
      * @param text Text String to be shown in the dialog.
      * @param img Image to be used in the dialog box as either the user or the chatbot.
+     * @param pictureHeight Height of picture to represent the user or chatbot.
      */
-    public DialogBox(String text, Image img) {
+    public DialogBox(String text, Image img, double pictureHeight) {
         try {
             FXMLLoader loader = new FXMLLoader(PhilMain.class.getResource("/view/DialogBox.fxml"));
             loader.setController(this);
@@ -44,6 +45,8 @@ public class DialogBox extends HBox {
         }
         dialog.setText(text);
         displayPicture.setImage(img);
+        displayPicture.setFitHeight(pictureHeight);
+        displayPicture.setFitWidth(pictureHeight);
     }
 
     /**

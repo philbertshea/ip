@@ -55,19 +55,20 @@ public class MainWindow extends AnchorPane {
      * at the TextField or the sendButton (in /view/DialogBox.fxml)
      */
     @FXML
-    private void handleUserInput() {
-        String input = userInput.getText();
-        DialogBox userDialog = new DialogBox(input, userImage);
-        DialogBox philDialog = new DialogBox(phil.getResponse(input), dukeImage);
+    private void handleUserInput() throws InterruptedException {
+        String input = this.userInput.getText();
+        DialogBox userDialog = new DialogBox(input, this.userImage, 50.0);
+        DialogBox philDialog = new DialogBox(this.phil.getResponse(input), this.dukeImage, 50.0);
         philDialog.flip();
 
-        dialogContainer.getChildren().addAll(userDialog, philDialog);
+        this.dialogContainer.getChildren().addAll(userDialog, philDialog);
+        this.userInput.clear();
+
         if (input.equals("bye")) {
             // Code adapted from a.b on https://stackoverflow.com/questions/13567019/close-fxml-window-by-code-javafx
             Stage stage = (Stage) this.dialogContainer.getScene().getWindow();
             stage.close();
         }
-        userInput.clear();
     }
 }
 
