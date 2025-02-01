@@ -1,4 +1,4 @@
-package phil;
+package phil.exception;
 
 /**
  * Exception representing invalid arguments passed when creating tasks.
@@ -15,15 +15,15 @@ public class InvalidArgumentException extends PhilException {
     public InvalidArgumentException(CommandType commandType) {
         super("Invalid arguments passed for creating tasks.");
         if (commandType == CommandType.CREATE_TODO) {
-            this.explainedUsage = "A phil.Todo task requires a description of minimally one word."
+            this.explainedUsage = "A phil.model.Todo task requires a description of minimally one word."
                     + "\n For example, 'todo read' creates the task 'read'.";
         } else if (commandType == CommandType.CREATE_DEADLINE) {
-            this.explainedUsage = "A phil.Deadline task requires a description AND a deadline, "
+            this.explainedUsage = "A phil.model.Deadline task requires a description AND a deadline, "
                                   + "specified as a string after '/by'."
                                   + "\n For example, 'deadline read /by Tuesday' creates the task"
                                   + " 'read' with a deadline of 'Tuesday'.";
         } else if (commandType == CommandType.CREATE_EVENT) {
-            this.explainedUsage = "An phil.Event task requires a description AND a from date, "
+            this.explainedUsage = "An phil.model.Event task requires a description AND a from date, "
                                   + "specified as a string after '/by'."
                                   + "\n And a to date, specified as a string after '/to'."
                                   + "\n For example, 'event reading /from Monday /to Tuesday' "

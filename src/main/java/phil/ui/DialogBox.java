@@ -1,4 +1,4 @@
-package phil;
+package phil.ui;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import phil.main.PhilMain;
 
 
 /**

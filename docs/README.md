@@ -1,4 +1,4 @@
-# phil.PhilTextUI User Guide
+# phil.main.PhilTextUI User Guide
 
 // Update the title above to match the actual product name
 

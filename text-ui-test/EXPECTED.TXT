@@ -1,7 +1,7 @@
 
 -----------------------------------------
 
-Hello. I'm phil.PhilTextUI.
+Hello. I'm phil.main.PhilTextUI.
 What can I do for you?
 Tip: say 'list' to get a list of actions to do, say 'bye' to end the conversation.
 
@@ -21,7 +21,7 @@ Now you have 1 tasks in the list.
 
 Invalid arguments passed for creating tasks.
 Details: 
-A phil.Deadline task requires a description AND a deadline, specified as a string after '/by'.
+A phil.model.Deadline task requires a description AND a deadline, specified as a string after '/by'.
  For example, 'deadline read /by Tuesday' creates the task 'read' with a deadline of 'Tuesday'.
 
 -----------------------------------------
@@ -40,7 +40,7 @@ Now you have 2 tasks in the list.
 
 Invalid arguments passed for creating tasks.
 Details: 
-An phil.Event task requires a description AND a from date, specified as a string after '/by'.
+An phil.model.Event task requires a description AND a from date, specified as a string after '/by'.
  And a to date, specified as a string after '/to'.
  For example, 'event reading /from Monday /to Tuesday' creates the event 'reading'
  from 'Monday' to 'Tuesday'.
@@ -108,9 +108,9 @@ Here are the tasks in your list:
 some incompatible command is not a valid command. 
 These are the supported commands: 
 'list' to see the list of tasks.
-'todo <some task>' to create a new phil.Todo task.
-'deadline <some task> \by <deadline-date>' to create a new phil.Deadline task.
-'event <some task> \from <start-date> \end <end-date>' to create a new phil.Event task.
+'todo <some task>' to create a new phil.model.Todo task.
+'deadline <some task> \by <deadline-date>' to create a new phil.model.Deadline task.
+'event <some task> \from <start-date> \end <end-date>' to create a new phil.model.Event task.
 'bye' to end the conversation. 
 
 

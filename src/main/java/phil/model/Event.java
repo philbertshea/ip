@@ -1,4 +1,4 @@
-package phil;
+package phil.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

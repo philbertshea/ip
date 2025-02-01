@@ -1,4 +1,4 @@
-package phil;
+package phil.model;
 
 import java.util.ArrayList;
 import java.util.List;

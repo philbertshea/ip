@@ -1,4 +1,4 @@
-package phil;
+package phil.main;
 
 import javafx.application.Application;
 

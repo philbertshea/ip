@@ -1,4 +1,4 @@
-package phil;
+package phil.model;
 
 /**
  * Represents the abstract Task class.

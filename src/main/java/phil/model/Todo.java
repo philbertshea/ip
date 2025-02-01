@@ -1,4 +1,4 @@
-package phil;
+package phil.model;
 
 /**
  * Represents a Todo task which has a description.

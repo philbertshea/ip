@@ -1,4 +1,4 @@
-package phil;
+package phil.main;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import phil.ui.MainWindow;
 
 /**
  * Represents PhilMain instance that is an Application

@@ -1,4 +1,14 @@
-package phil;
+package phil.main;
+
+import phil.exception.CommandType;
+import phil.exception.InvalidArgumentException;
+import phil.exception.InvalidCommandException;
+import phil.exception.PhilException;
+import phil.model.Deadline;
+import phil.model.Event;
+import phil.model.TaskList;
+import phil.model.Todo;
+import phil.storage.Storage;
 
 import java.util.Arrays;
 import java.util.List;

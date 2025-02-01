@@ -1,4 +1,8 @@
-package phil;
+package phil.main;
+
+import phil.exception.PhilException;
+import phil.model.TaskList;
+import phil.storage.Storage;
 
 /**
  * Represents the Phil instance that stores the parser

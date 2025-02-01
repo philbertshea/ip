@@ -1,8 +1,8 @@
-Todo - X - hello
-Deadline -   - read a book - 12/20/2024 1000
-Event - X - read - 01/5/2023 1045 - tomorrow
 Todo -   - read another book
-Todo -   - hi
+Todo - X - hi
 Todo -   - read a new book
 Event -   - competition for sleeping - today - tomorrow
 Todo -   - do something today
+Todo -   - hi
+Todo -   - bye
+Event -   - hi - today - next month

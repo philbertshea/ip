@@ -1,4 +1,8 @@
-package phil;
+package phil.main;
+
+import phil.ui.Ui;
+import phil.model.TaskList;
+import phil.storage.Storage;
 
 /**
  * Main Class of Phil.

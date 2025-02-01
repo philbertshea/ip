@@ -1,4 +1,4 @@
-package phil;
+package phil.exception;
 
 /**
  * Exception which is a runtime exception, specially for Phil.
