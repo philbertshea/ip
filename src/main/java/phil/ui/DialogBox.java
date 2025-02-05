@@ -19,7 +19,6 @@ import phil.main.PhilMain;
 /**
  * Represents a Dialog Box instance, which when used with /view/DialogBox.fxml
  * represents a dialog for either an input by the user, or an output by the chatbot.
- *
  */
 public class DialogBox extends HBox {
     @FXML
@@ -29,7 +28,7 @@ public class DialogBox extends HBox {
     private ImageView displayPicture;
 
     /**
-     * Constructor for DialogBox instance.
+     * Sets up the DialogBox instance.
      *
      * @param text Text String to be shown in the dialog.
      * @param img Image to be used in the dialog box as either the user or the chatbot.

@@ -5,14 +5,12 @@ import phil.model.TaskList;
 import phil.storage.Storage;
 
 /**
- * Main Class of Phil.
- *
+ * Represents Main Class of Phil (TextUI version) to be executed for running the bot.
  */
 public class PhilTextUI {
 
     /**
      * Main Method to be executed to initialise the chatbot.
-     *
      */
     public static void main(String[] args) {
 

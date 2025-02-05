@@ -6,7 +6,6 @@ import java.time.format.DateTimeParseException;
 
 /**
  * Represents a Event task which has a description and a from-date and an end-date.
- *
  */
 public class Event extends Task {
     private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
@@ -17,7 +16,7 @@ public class Event extends Task {
     private LocalDateTime toDateInDateTime;
 
     /**
-     * Constructor for the Event object
+     * Sets up the Event object
      *
      * @param description String which describes the event task.
      * @param fromDate String which represents the start date of the task.
@@ -46,7 +45,7 @@ public class Event extends Task {
      * If a LocalDateTime was provided as the fromdate, it formats it based on the formatter provided.
      * Else, the String fromdate is returned.
      *
-     * @param formatter formattr to format the LocalDateTime object representing the from date to.
+     * @param formatter formatter to format the LocalDateTime object representing the from date to.
      * @return String representation of the from date.
      */
     public String fromDateToString(DateTimeFormatter formatter) {
@@ -62,7 +61,7 @@ public class Event extends Task {
      * If a LocalDateTime was provided as the to-date, it formats it based on the formatter provided.
      * Else, the String todate is returned.
      *
-     * @param formatter formattr to format the LocalDateTime object representing the to date to.
+     * @param formatter formatter to format the LocalDateTime object representing the to date to.
      * @return String representation of the to date.
      */
     public String toDateToString(DateTimeFormatter formatter) {

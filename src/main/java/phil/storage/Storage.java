@@ -1,6 +1,10 @@
 package phil.storage;
 
-import phil.model.*;
+import phil.model.Task;
+import phil.model.Todo;
+import phil.model.Deadline;
+import phil.model.Event;
+import phil.model.TaskList;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,8 +13,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Storage representing the loading and storing of data to disk.
- *
+ * Represents the storage element which allows the loading and storing of data to disk.
  */
 public class Storage {
 
@@ -18,7 +21,7 @@ public class Storage {
     private Path dataPath;
 
     /**
-     * Constructor of Storage object.
+     * Sets up the Storage object.
      *
      * @param dirPath directory path for storing data
      * @param dataPath file path for storing data
@@ -72,7 +75,7 @@ public class Storage {
     }
 
     /**
-     * Saves task list into a path
+     * Saves task list into a file at a specified datapath.
      *
      * @param taskList list of tasks to save.
      * @throws IOException thrown if there are IO errors when saving.

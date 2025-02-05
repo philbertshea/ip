@@ -13,8 +13,7 @@ public class Phil {
     private Parser parser;
 
     /**
-     * Constructor of Phil instance.
-     *
+     * Sets up the Phil instance.
      */
     public Phil() {
         TaskList taskList;
@@ -33,12 +32,12 @@ public class Phil {
     /**
      * Return response from parser based on input.
      *
-     * @param input String passed in as input
-     * @return String response to be returned by parser
+     * @param input String passed in as input.
+     * @return String response to be returned by parser.
      */
     public String getResponse(String input) {
         try {
-            return this.parser.processInput(input);
+            return this.parser.generateStringOutputFromInput(input);
         } catch (PhilException e) {
             return e.getMessage();
         }

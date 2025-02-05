@@ -14,18 +14,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Parser which contains logic to process input strings passed in.
- *
+ * Represents the Parser which contains logic to process input strings passed in.
  */
 public class Parser {
     private TaskList taskList;
     private Storage storage;
 
     /**
-     * Constructor of Parser object.
+     * Sets up the Parser object.
      *
-     * @param taskList list of tasks
-     * @param storage storage
+     * @param taskList list of tasks.
+     * @param storage storage.
      */
     public Parser(TaskList taskList, Storage storage) {
         this.taskList = taskList;
@@ -39,7 +38,7 @@ public class Parser {
      * @return output to print if command is valid.
      * @throws PhilException to be thrown if command or arguments are not valid.
      */
-    public String processInput(String input) throws PhilException {
+    public String generateStringOutputFromInput(String input) throws PhilException {
         List<String> inputArgs = Arrays.asList(input.split(" "));
         int numTasks = this.taskList.getNumberOfTasks();
 
@@ -105,7 +104,6 @@ public class Parser {
                 String fromDate = String.join(" ", inputArgs.subList(fromIndex + 1, toIndex));
                 String toDate = String.join(" ", inputArgs.subList(toIndex + 1, inputArgs.size()));
                 return this.taskList.addTask(new Event(description, fromDate, toDate));
-
             }
         } else if (input.startsWith("find")) {
             if (inputArgs.size() < 2) {

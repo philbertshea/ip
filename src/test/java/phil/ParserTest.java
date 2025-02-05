@@ -10,25 +10,25 @@ import phil.storage.Storage;
 
 
 /**
- * Represents Testing Class for Parser.
+ * Represents the Testing Class for Parser.
  */
 public class ParserTest {
 
     /**
-     * Test the processInput method of the Parser class.
+     * Tests the generateStringOutputFromInput method of the Parser class.
      */
     @Test
-    public void processInput() {
+    public void generateStringOutputFromInput() {
         // Initialise with an empty TaskList
         TaskList taskList = new TaskList();
         TaskList taskListCompare = new TaskList();
         Parser parser = new Parser(taskList, new Storage("data", "phil.txt"));
 
         assertEquals(taskListCompare.addTask(new Todo("read a book")),
-                     parser.processInput("todo read a book"));
+                     parser.generateStringOutputFromInput("todo read a book"));
 
         // Print list
-        assertEquals(taskListCompare.toString(), parser.processInput("list"));
+        assertEquals(taskListCompare.toString(), parser.generateStringOutputFromInput("list"));
     }
 
 }

@@ -31,7 +31,7 @@ public class MainWindow extends AnchorPane {
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     /**
-     * Initialise the scrollpane to scroll to the height of the dialog container.
+     * Initialises the scrollpane to scroll to the height of the dialog container.
      */
     @FXML
     private void initialize() {
@@ -39,7 +39,7 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Set the Phil attribute to the Phil instance passed.
+     * Sets the Phil attribute to the Phil instance passed.
      *
      * @param phil Phil instance passed.
      */
@@ -52,7 +52,7 @@ public class MainWindow extends AnchorPane {
     // Referenced in TextField onAction
 
     /**
-     * Add the corresponding user and duke dialogs once Action is detected
+     * Adds the corresponding user and duke dialogs once Action is detected
      * at the TextField or the sendButton (in /view/DialogBox.fxml)
      */
     @FXML

@@ -12,7 +12,7 @@ import phil.model.Todo;
 public class TodoTest {
 
     /**
-     * Test the toString method of the Todo class.
+     * Tests the toString method of the Todo class.
      */
     @Test
     public void toString_newTodo_correctStringOutput() {
@@ -26,7 +26,7 @@ public class TodoTest {
     }
 
     /**
-     * Test the toLoadString method of the Todo class.
+     * Tests the toLoadString method of the Todo class.
      */
     @Test
     public void toLoadString_newTodo_correctStringOutput() {

@@ -6,7 +6,6 @@ import java.time.format.DateTimeParseException;
 
 /**
  * Represents a Deadline task which has a description and a by-date.
- *
  */
 public class Deadline extends Task {
     private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
@@ -15,7 +14,7 @@ public class Deadline extends Task {
     private LocalDateTime byDateInDateTime;
 
     /**
-     * Constructor for the Deadline object
+     * Sets up the Deadline object
      *
      * @param description String which describes the deadline task.
      * @param byDate String which represents the deadline of the task.
@@ -39,7 +38,7 @@ public class Deadline extends Task {
      * If a LocalDateTime was provided as the bydate, it formats it based on the formatter provided.
      * Else, the String bydate is returned.
      *
-     * @param formatter formattr to format the LocalDateTime object representing the by date to.
+     * @param formatter formatter to format the LocalDateTime object representing the by date to.
      * @return String representation of the by date.
      */
     public String byDateToString(DateTimeFormatter formatter) {

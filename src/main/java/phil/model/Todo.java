@@ -2,12 +2,11 @@ package phil.model;
 
 /**
  * Represents a Todo task which has a description.
- *
  */
 public class Todo extends Task {
 
     /**
-     * Constructor for the Event object
+     * Sets up the Event object.
      *
      * @param description String which describes the event task.
      */

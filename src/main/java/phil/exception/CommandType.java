@@ -1,8 +1,7 @@
 package phil.exception;
 
 /**
- * Enums representing Command Types, to be used with phil.exception.InvalidArgumentException
- *
+ * Represents the Command Types, to be used with phil.exception.InvalidArgumentException.
  */
 public enum CommandType {
     CREATE_TODO,

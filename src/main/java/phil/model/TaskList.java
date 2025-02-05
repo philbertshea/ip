@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representation of a list of tasks.
+ * Represents a list of tasks.
  */
 public class TaskList {
     private List<Task> listOfTasks;
 
     /**
-     * Constructor of the TaskList object.
-     *
+     * Sets up the TaskList object.
      */
     public TaskList() {
         this.listOfTasks = new ArrayList<Task>();
@@ -88,7 +87,7 @@ public class TaskList {
     }
 
     /**
-     * Returns list of tasks.
+     * Returns list of tasks stored in the task list.
      *
      * @return list of tasks stored.
      */
@@ -97,10 +96,10 @@ public class TaskList {
     }
 
     /**
-     * Returns filtered tasks based on search term
+     * Returns filtered tasks based on search term.
      *
-     * @param searchTerm String representing the search term to use
-     * @return String representing all filtered tasks
+     * @param searchTerm String representing the search term to use.
+     * @return String representing all filtered tasks.
      */
     public String filteredTasksToString(String searchTerm) {
         StringBuilder listToPrint = new StringBuilder();

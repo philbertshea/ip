@@ -1,14 +1,13 @@
 package phil.exception;
 
 /**
- * Exception representing invalid arguments passed when creating tasks.
- *
+ * Represents the exception to be returned for invalid arguments passed when creating tasks.
  */
 public class InvalidArgumentException extends PhilException {
     private String explainedUsage;
 
     /**
-     * Constructor for InvalidArgumentException.
+     * Sets up the InvalidArgumentException.
      *
      * @param commandType enum Command type representing the type of command passed by the user.
      */
@@ -34,7 +33,7 @@ public class InvalidArgumentException extends PhilException {
     }
 
     /**
-     * Constructor for InvalidArgumentException.
+     * Sets up the InvalidArgumentException, for commands MARK_DONE, MARK_UNDONE and DELETE_TASK.
      *
      * @param commandType enum Command type representing the type of command passed by the user.
      * @param numTasks number of tasks, for commands involving marking, unmarking or deleting tasks.

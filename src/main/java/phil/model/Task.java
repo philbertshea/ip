@@ -1,15 +1,14 @@
 package phil.model;
 
 /**
- * Represents the abstract Task class.
- *
+ * Represents the abstract Task class, which concrete classes Todo, Event, Deadline extend from.
  */
 public abstract class Task {
     protected String description;
     protected boolean isDone;
 
     /**
-     * Constructor for the Task object
+     * Sets up the Task object.
      *
      * @param description String which describes the event task.
      */
@@ -19,24 +18,21 @@ public abstract class Task {
     }
 
     /**
-     * Mark the task as done.
-     *
+     * Marks the task as done.
      */
     public void markDone() {
         this.isDone = true;
     }
 
     /**
-     * Mark the task as not done.
-     *
+     * Marks the task as not done.
      */
     public void markNotDone() {
         this.isDone = false;
     }
 
     /**
-     * Get the status icon based on whether the task is done (X) or not ( ).
-     *
+     * Gets the status icon based on whether the task is done (X) or not ( ).
      */
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
@@ -62,10 +58,10 @@ public abstract class Task {
     }
 
     /**
-     * Returns whether string is in description
+     * Returns whether string is in description.
      *
      * @param str String search term to check in description.
-     * @return boolean representing whether string is in description
+     * @return boolean representing whether string is in description.
      */
     public boolean descContains(String str) {
         return this.description.contains(str);

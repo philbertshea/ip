@@ -6,15 +6,14 @@ import phil.main.Parser;
 import java.util.Scanner;
 
 /**
- * Ui representing the user interface for interacting with the chatbot
- *
+ * Represents the text-based user interface for interacting with the chatbot.
  */
 public class Ui {
 
     private Parser parser;
 
     /**
-     * Constructor for the Ui object.
+     * Sets up the Ui object.
      *
      * @param parser Parser to be used by the Ui.
      */
@@ -25,7 +24,7 @@ public class Ui {
     /**
      * Prints the given output with additional lines to separate the output.
      *
-     * @param output output to be printed
+     * @param output output to be printed.
      */
     public void printOutput(String output) {
         System.out.println("\n-----------------------------------------\n");
@@ -34,8 +33,7 @@ public class Ui {
     }
 
     /**
-     * Runs the user interface of the bot, including receiving input and printing output
-     *
+     * Runs the user interface of the bot, including receiving input and printing output.
      */
     public void runBot() {
         Scanner sc = new Scanner(System.in);
@@ -46,7 +44,7 @@ public class Ui {
         while (sc.hasNextLine()) {
             try {
                 String input = sc.nextLine();
-                printOutput(parser.processInput(input));
+                printOutput(parser.generateStringOutputFromInput(input));
                 if (input.equals("bye")) {
                     break;
                 }
