@@ -9,5 +9,8 @@ public enum CommandType {
     CREATE_EVENT,
     MARK_DONE,
     MARK_UNDONE,
-    DELETE_TASK
+    DELETE_TASK,
+    FIND_TASK,
+    CREATE_NOTE,
+    DELETE_NOTE
 }

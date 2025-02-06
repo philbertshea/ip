@@ -2,6 +2,7 @@ package phil.main;
 
 import phil.exception.PhilException;
 import phil.model.TaskList;
+import phil.model.NoteList;
 import phil.storage.Storage;
 
 /**
@@ -16,13 +17,16 @@ public class Phil {
      */
     public Phil() {
         TaskList taskList;
-        Storage storage = new Storage("data", "phil.txt");
+        NoteList noteList;
+        Storage storage = new Storage("data", "phil.txt", "philNotes.txt");
         try {
-            taskList = storage.load();
+            taskList = storage.loadTasks();
+            noteList = storage.loadNotes();
         } catch (Exception e) {
             taskList = new TaskList();
+            noteList = new NoteList();
         }
-        this.parser = new Parser(taskList, storage);
+        this.parser = new Parser(taskList, noteList, storage);
     }
 
     /**

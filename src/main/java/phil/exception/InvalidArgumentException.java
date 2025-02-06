@@ -14,19 +14,25 @@ public class InvalidArgumentException extends PhilException {
     public InvalidArgumentException(CommandType commandType) {
         super("Invalid arguments passed for creating tasks.");
         if (commandType == CommandType.CREATE_TODO) {
-            this.explainedUsage = "A phil.model.Todo task requires a description of minimally one word."
+            this.explainedUsage = "A Todo task requires a description of minimally one word."
                     + "\n For example, 'todo read' creates the task 'read'.";
         } else if (commandType == CommandType.CREATE_DEADLINE) {
-            this.explainedUsage = "A phil.model.Deadline task requires a description AND a deadline, "
+            this.explainedUsage = "A Deadline task requires a description AND a deadline, "
                                   + "specified as a string after '/by'."
                                   + "\n For example, 'deadline read /by Tuesday' creates the task"
                                   + " 'read' with a deadline of 'Tuesday'.";
         } else if (commandType == CommandType.CREATE_EVENT) {
-            this.explainedUsage = "An phil.model.Event task requires a description AND a from date, "
+            this.explainedUsage = "An Event task requires a description AND a from date, "
                                   + "specified as a string after '/by'."
                                   + "\n And a to date, specified as a string after '/to'."
                                   + "\n For example, 'event reading /from Monday /to Tuesday' "
                                   + " creates the event 'reading'\n from 'Monday' to 'Tuesday'.";
+        } else if (commandType == CommandType.FIND_TASK) {
+            this.explainedUsage = "Finding a task requires a search term of minimally one word."
+                    + "\n For example, 'find hello' finds all tasks with the keyword 'hello'.";
+        } else if (commandType == CommandType.CREATE_NOTE) {
+            this.explainedUsage = "A Note requires a description of minimally one word."
+                    + "\n For example, 'new-note the sky is blue' creates the note 'the sky is blue'.";
         } else {
             this.explainedUsage = "";
         }
@@ -57,6 +63,11 @@ public class InvalidArgumentException extends PhilException {
                                   + "\nMake sure X is a valid positive integer from 1 to " + numTasks + " . "
                                   + "\nFor example, calling 'delete 2' deletes the second task."
                                   + "\nSay 'list' to see the tasks you have stored.";
+        } else if (commandType == CommandType.DELETE_NOTE) {
+            this.explainedUsage = "To delete a note, say 'delete X' where X is the note to remove."
+                    + "\nMake sure X is a valid positive integer from 1 to " + numTasks + " . "
+                    + "\nFor example, calling 'delete-note 2' deletes the second note."
+                    + "\nSay 'list-note' to see the note you have stored.";
         } else {
             this.explainedUsage = "";
         }

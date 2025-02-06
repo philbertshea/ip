@@ -2,6 +2,7 @@ package phil.main;
 
 import phil.ui.Ui;
 import phil.model.TaskList;
+import phil.model.NoteList;
 import phil.storage.Storage;
 
 /**
@@ -15,16 +16,19 @@ public class PhilTextUI {
     public static void main(String[] args) {
 
         TaskList taskList;
-        Storage storage = new Storage("data", "phil.txt");
+        NoteList noteList;
+        Storage storage = new Storage("data", "phil.txt", "philNotes.txt");
         String loadMessage = "";
         try {
-            taskList = storage.load();
-            loadMessage += "Successfully loaded previous tasks.";
+            taskList = storage.loadTasks();
+            noteList = storage.loadNotes();
+            loadMessage += "Successfully loaded previous notes.";
         } catch (Exception e) {
             taskList = new TaskList();
-            loadMessage += "Error when loading tasks. Not loaded. \n" + e.getMessage();
+            noteList = new NoteList();
+            loadMessage += "Error when loading notes. Not loaded. \n" + e.getMessage();
         }
-        Parser parser = new Parser(taskList, storage);
+        Parser parser = new Parser(taskList, noteList, storage);
         Ui ui = new Ui(parser);
         ui.printOutput(loadMessage);
 

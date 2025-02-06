@@ -5,6 +5,8 @@ import phil.model.Todo;
 import phil.model.Deadline;
 import phil.model.Event;
 import phil.model.TaskList;
+import phil.model.NoteList;
+import phil.model.Note;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,41 +20,43 @@ import java.util.List;
 public class Storage {
 
     private Path dirPath;
-    private Path dataPath;
+    private Path taskPath;
+    private Path notePath;
 
     /**
      * Sets up the Storage object.
      *
      * @param dirPath directory path for storing data
-     * @param dataPath file path for storing data
+     * @param taskPath file path for storing data
      */
-    public Storage(String dirPath, String dataPath) {
+    public Storage(String dirPath, String taskPath, String notePath) {
         this.dirPath = Paths.get(dirPath);
-        this.dataPath = Paths.get(dirPath, dataPath);
+        this.taskPath = Paths.get(dirPath, taskPath);
+        this.notePath = Paths.get(dirPath, notePath);
     }
 
     /**
-     * Loads file specified at dirPath and datapath.
+     * Loads file specified at dirPath and taskPath.
      *
-     * @return task list obtained from loading file at datapath.
+     * @return task list obtained from loading file at taskPath.
      * @throws IOException if directory or file cannot be opened or other IO issues.
      */
-    public TaskList load() throws IOException {
+    public TaskList loadTasks() throws IOException {
         TaskList taskList = new TaskList();
 
         // Create folder 'data' and/or file 'phil.txt' if it does not exist
         if (!Files.exists(this.dirPath)) {
             Files.createDirectory(this.dirPath);
         }
-        if (!Files.exists(this.dataPath)) {
-            Files.createFile(this.dataPath);
+        if (!Files.exists(this.taskPath)) {
+            Files.createFile(this.taskPath);
         }
 
         // Assert that both the directory path and the data path must exist.
-        assert Files.exists(this.dirPath) && Files.exists(this.dataPath);
+        assert Files.exists(this.dirPath) && Files.exists(this.taskPath);
 
         // Load data from 'phil.txt'
-        List<String> lines = Files.readAllLines(this.dataPath);
+        List<String> lines = Files.readAllLines(this.taskPath);
 
         for (String line : lines) {
             String[] lineArgs = line.split(" - ");
@@ -80,19 +84,50 @@ public class Storage {
     }
 
     /**
-     * Saves task list into a file at a specified datapath.
+     * Loads file specified at dirPath and taskPath.
+     *
+     * @return task list obtained from loading file at taskPath.
+     * @throws IOException if directory or file cannot be opened or other IO issues.
+     */
+    public NoteList loadNotes() throws IOException {
+        NoteList noteList = new NoteList();
+
+        // Create folder 'data' and/or file 'phil.txt' if it does not exist
+        if (!Files.exists(this.dirPath)) {
+            Files.createDirectory(this.dirPath);
+        }
+        if (!Files.exists(this.notePath)) {
+            Files.createFile(this.notePath);
+        }
+
+        // Assert that both the directory path and the data path must exist.
+        assert Files.exists(this.dirPath) && Files.exists(this.notePath);
+
+        // Load data from note path
+        List<String> lines = Files.readAllLines(this.notePath);
+
+        for (String line : lines) {
+            noteList.addNote(new Note(line));
+        }
+        return noteList;
+    }
+
+    /**
+     * Saves task list into a file at a specified taskPath.
      *
      * @param taskList list of tasks to save.
      * @throws IOException thrown if there are IO errors when saving.
      */
-    public void save(TaskList taskList) throws IOException {
+    public void save(TaskList taskList, NoteList noteList) throws IOException {
         // Assert that both the directory path and the data path must exist.
-        assert Files.exists(this.dirPath) && Files.exists(this.dataPath);
+        assert Files.exists(this.dirPath) && Files.exists(this.taskPath) && Files.exists(this.notePath);
 
-        StringBuilder resultString = new StringBuilder();
+        StringBuilder tasksString = new StringBuilder();
         for (Task task : taskList.getListOfTasks()) {
-            resultString.append(task.toLoadString()).append("\n");
+            tasksString.append(task.toLoadString()).append("\n");
         }
-        Files.writeString(this.dataPath, resultString.toString());
+        Files.writeString(this.taskPath, tasksString.toString());
+
+        Files.writeString(this.notePath, noteList.toLoadString());
     }
 }
