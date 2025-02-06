@@ -8,8 +8,8 @@ import java.time.format.DateTimeParseException;
  * Represents a Deadline task which has a description and a by-date.
  */
 public class Deadline extends Task {
-    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
-    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
     private String byDate;
     private LocalDateTime byDateInDateTime;
 
@@ -23,7 +23,7 @@ public class Deadline extends Task {
         super(description);
         // Check if byDate is in datetime format, and parse it as datetime if so.
         try {
-            LocalDateTime byDateInDateTime = LocalDateTime.parse(byDate, Deadline.inputFormatter);
+            LocalDateTime byDateInDateTime = LocalDateTime.parse(byDate, Deadline.INPUT_FORMATTER);
             this.byDate = null;
             this.byDateInDateTime = byDateInDateTime;
         } catch (DateTimeParseException e) {
@@ -60,7 +60,7 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: "
-                + this.byDateToString(Deadline.outputFormatter) + ")";
+                + this.byDateToString(Deadline.OUTPUT_FORMATTER) + ")";
     }
 
     /**
@@ -71,7 +71,7 @@ public class Deadline extends Task {
     @Override
     public String toLoadString() {
         return "Deadline - " + super.toLoadString() + " - "
-                + this.byDateToString(Deadline.inputFormatter);
+                + this.byDateToString(Deadline.INPUT_FORMATTER);
     }
 
 }

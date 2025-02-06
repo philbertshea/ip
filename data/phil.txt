@@ -6,3 +6,4 @@ Todo -   - do something today
 Todo -   - hi
 Todo -   - bye
 Event -   - hi - today - next month
+Deadline -   - hi - tomorrow

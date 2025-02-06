@@ -8,8 +8,8 @@ import java.time.format.DateTimeParseException;
  * Represents a Event task which has a description and a from-date and an end-date.
  */
 public class Event extends Task {
-    private static final DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
-    private static final DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
+    private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
     private String fromDate;
     private String toDate;
     private LocalDateTime fromDateInDateTime;
@@ -25,14 +25,14 @@ public class Event extends Task {
     public Event(String description, String fromDate, String toDate) {
         super(description);
         try {
-            this.fromDateInDateTime = LocalDateTime.parse(fromDate, Event.inputFormatter);
+            this.fromDateInDateTime = LocalDateTime.parse(fromDate, Event.INPUT_FORMATTER);
             this.fromDate = null;
         } catch (DateTimeParseException e) {
             this.fromDate = fromDate;
             this.fromDateInDateTime = null;
         }
         try {
-            this.toDateInDateTime = LocalDateTime.parse(toDate, Event.inputFormatter);
+            this.toDateInDateTime = LocalDateTime.parse(toDate, Event.INPUT_FORMATTER);
             this.toDate = null;
         } catch (DateTimeParseException e) {
             this.toDate = toDate;
@@ -85,8 +85,8 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: "
-                + this.fromDateToString(Event.outputFormatter) + " to: "
-                + this.toDateToString(Event.outputFormatter) + ")";
+                + this.fromDateToString(Event.OUTPUT_FORMATTER) + " to: "
+                + this.toDateToString(Event.OUTPUT_FORMATTER) + ")";
     }
 
     /**
@@ -97,7 +97,7 @@ public class Event extends Task {
     @Override
     public String toLoadString() {
         return "Event - " + super.toLoadString() + " - "
-                + this.fromDateToString(Event.inputFormatter) + " - "
-                + this.toDateToString(Event.inputFormatter);
+                + this.fromDateToString(Event.INPUT_FORMATTER) + " - "
+                + this.toDateToString(Event.INPUT_FORMATTER);
     }
 }
