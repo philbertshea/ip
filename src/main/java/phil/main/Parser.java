@@ -35,9 +35,9 @@ public class Parser {
      * Checks whether the given string input is valid
      * for Mark, Unmark, Delete commands, requiring only one argument.
      *
-     * @param inputArgs String list from input String, delimited by space
-     * @param numTasks number of tasks in task list
-     * @return boolean representing if input is valid
+     * @param inputArgs String list from input String, delimited by space.
+     * @param numTasks number of tasks in task list.
+     * @return boolean representing if input is invalid.
      */
     private boolean isInputInvalidForMarkUnmarkDelete(List<String> inputArgs, int numTasks) {
         boolean hasTwoArgs = inputArgs.size() == 2;
@@ -46,6 +46,15 @@ public class Parser {
         return !hasTwoArgs || !secondArgIsInteger || !secondArgIsValidTaskNumber;
     }
 
+    /**
+     * Checks whether the given string input is valid
+     * for Find, Todo, Event, Deadline commands.
+     *
+     * @param inputArgs String list from input String, delimited by space.
+     * @param minimumNumberOfArgs minimum number of arguments required.
+     * @param requiredArgs varArgs for required args to check.
+     * @return boolean representing if input is invalid.
+     */
     private boolean isInputInvalidForFindAndTaskCreation(List<String> inputArgs, int minimumNumberOfArgs, String... requiredArgs) {
         boolean hasMinNumberOfArgs = inputArgs.size() >= minimumNumberOfArgs;
         boolean hasRequiredArgs = true;
