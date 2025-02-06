@@ -39,6 +39,9 @@ public class Parser {
      * @throws PhilException to be thrown if command or arguments are not valid.
      */
     public String generateStringOutputFromInput(String input) throws PhilException {
+        // Assert taskList and storage are initialised, before potential accesses.
+        assert this.taskList != null && this.storage != null;
+
         List<String> inputArgs = Arrays.asList(input.split(" "));
         int numTasks = this.taskList.getNumberOfTasks();
 

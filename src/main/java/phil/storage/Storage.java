@@ -39,6 +39,7 @@ public class Storage {
      */
     public TaskList load() throws IOException {
         TaskList taskList = new TaskList();
+
         // Create folder 'data' and/or file 'phil.txt' if it does not exist
         if (!Files.exists(this.dirPath)) {
             Files.createDirectory(this.dirPath);
@@ -47,8 +48,12 @@ public class Storage {
             Files.createFile(this.dataPath);
         }
 
+        // Assert that both the directory path and the data path must exist.
+        assert Files.exists(this.dirPath) && Files.exists(this.dataPath);
+
         // Load data from 'phil.txt'
         List<String> lines = Files.readAllLines(this.dataPath);
+
         for (String line : lines) {
             String[] lineArgs = line.split(" - ");
             if (lineArgs[0].equals("Todo")) {
@@ -81,6 +86,9 @@ public class Storage {
      * @throws IOException thrown if there are IO errors when saving.
      */
     public void save(TaskList taskList) throws IOException {
+        // Assert that both the directory path and the data path must exist.
+        assert Files.exists(this.dirPath) && Files.exists(this.dataPath);
+
         StringBuilder resultString = new StringBuilder();
         for (Task task : taskList.getListOfTasks()) {
             resultString.append(task.toLoadString()).append("\n");
