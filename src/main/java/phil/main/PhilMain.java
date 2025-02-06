@@ -14,7 +14,6 @@ import phil.ui.MainWindow;
  * to be launched by the Launcher class upon calling gradle run.
  */
 public class PhilMain extends Application {
-
     private Phil phil = new Phil();
 
     /**

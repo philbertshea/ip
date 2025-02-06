@@ -32,6 +32,30 @@ public class Parser {
     }
 
     /**
+     * Checks whether the given string input is valid
+     * for Mark, Unmark, Delete commands, requiring only one argument.
+     *
+     * @param inputArgs String list from input String, delimited by space
+     * @param numTasks number of tasks in task list
+     * @return boolean representing if input is valid
+     */
+    private boolean isInputInvalidForMarkUnmarkDelete(List<String> inputArgs, int numTasks) {
+        boolean hasTwoArgs = inputArgs.size() == 2;
+        boolean secondArgIsInteger = inputArgs.get(1).matches("\\d+");
+        boolean secondArgIsValidTaskNumber = Integer.parseInt(inputArgs.get(1)) <= numTasks;
+        return !hasTwoArgs || !secondArgIsInteger || !secondArgIsValidTaskNumber;
+    }
+
+    private boolean isInputInvalidForFindAndTaskCreation(List<String> inputArgs, int minimumNumberOfArgs, String... requiredArgs) {
+        boolean hasMinNumberOfArgs = inputArgs.size() >= minimumNumberOfArgs;
+        boolean hasRequiredArgs = true;
+        for (String arg : requiredArgs) {
+            hasRequiredArgs = hasRequiredArgs && inputArgs.contains(arg);
+        }
+        return !hasMinNumberOfArgs || !hasRequiredArgs;
+    }
+
+    /**
      * Takes in a String input, and returns the corresponding output based on the command.
      *
      * @param input input by user representing the command.
@@ -56,40 +80,36 @@ public class Parser {
         } else if (input.equals("list")) {
             return this.taskList.toString();
         } else if (input.startsWith("delete")) {
-            if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+")
-                    || Integer.parseInt(inputArgs.get(1)) > numTasks) {
+            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks)) {
                 throw new InvalidArgumentException(CommandType.DELETE_TASK, numTasks);
             } else {
                 int taskToRemove = Integer.parseInt(input.split(" ")[1]);
                 return this.taskList.deleteTask(taskToRemove);
             }
         } else if (input.startsWith("mark")) {
-            if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+")
-                    || Integer.parseInt(inputArgs.get(1)) > numTasks) {
+            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks)) {
                 throw new InvalidArgumentException(CommandType.MARK_DONE, numTasks);
             } else {
                 int taskToMark = Integer.parseInt(input.split(" ")[1]);
                 return this.taskList.markTaskAsDone(taskToMark);
             }
         } else if (input.startsWith("unmark")) {
-            if (inputArgs.size() != 2 || !inputArgs.get(1).matches("\\d+")
-                    || Integer.parseInt(inputArgs.get(1)) > numTasks) {
+            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks)) {
                 throw new InvalidArgumentException(CommandType.MARK_UNDONE, numTasks);
             } else {
                 int taskToMark = Integer.parseInt(input.split(" ")[1]);
                 return this.taskList.markTaskAsNotDone(taskToMark);
             }
-
         } else if (input.startsWith("todo")) {
-            if (inputArgs.size() < 2) {
+            if (isInputInvalidForFindAndTaskCreation(inputArgs, 2)) {
                 throw new InvalidArgumentException(CommandType.CREATE_TODO);
             } else {
-                // The whole input except for the first word 'todo' is the task description
+                // Get the whole input except for the first word 'todo' as the task description
                 String description = String.join(" ", inputArgs.subList(1, inputArgs.size()));
                 return this.taskList.addTask(new Todo(description));
             }
         } else if (input.startsWith("deadline")) {
-            if (inputArgs.size() < 2 || !inputArgs.contains("/by")) {
+            if (isInputInvalidForFindAndTaskCreation(inputArgs, 4, "/by")) {
                 throw new InvalidArgumentException(CommandType.CREATE_DEADLINE);
             } else {
                 int byIndex = inputArgs.indexOf("/by");
@@ -98,7 +118,7 @@ public class Parser {
                 return this.taskList.addTask(new Deadline(description, byDate));
             }
         } else if (input.startsWith("event")) {
-            if (inputArgs.size() < 2 || !inputArgs.contains("/from") || !inputArgs.contains("/to")) {
+            if (isInputInvalidForFindAndTaskCreation(inputArgs, 6, "/from", "/to")) {
                 throw new InvalidArgumentException(CommandType.CREATE_EVENT);
             } else {
                 int fromIndex = inputArgs.indexOf("/from");
@@ -109,10 +129,10 @@ public class Parser {
                 return this.taskList.addTask(new Event(description, fromDate, toDate));
             }
         } else if (input.startsWith("find")) {
-            if (inputArgs.size() < 2) {
+            if (isInputInvalidForFindAndTaskCreation(inputArgs, 2)) {
                 throw new InvalidArgumentException(CommandType.CREATE_TODO);
             } else {
-                // The whole input except for the first word 'find' is the task description
+                // Get the whole input except for the first word 'find' as the task description
                 String searchTerm = String.join(" ", inputArgs.subList(1, inputArgs.size()));
                 return this.taskList.filteredTasksToString(searchTerm);
             }
