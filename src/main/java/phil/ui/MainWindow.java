@@ -56,7 +56,7 @@ public class MainWindow extends AnchorPane {
      * at the TextField or the sendButton (in /view/DialogBox.fxml)
      */
     @FXML
-    private void handleUserInput() throws InterruptedException {
+    private void handleUserInput() {
         String input = this.userInput.getText();
         DialogBox userDialog = new DialogBox(input, this.userImage, 50.0);
         DialogBox philDialog = new DialogBox(this.phil.getResponse(input), this.dukeImage, 50.0);
