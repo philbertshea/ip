@@ -53,10 +53,11 @@ public class MainWindow extends AnchorPane {
 
     /**
      * Adds the corresponding user and duke dialogs once Action is detected
-     * at the TextField or the sendButton (in /view/DialogBox.fxml)
+     * at the TextField or the sendButton (in /view/DialogBox.fxml).
+     * Closes the stage if user inputs bye.
      */
     @FXML
-    private void handleUserInput() {
+    private void addInputAndOutputDialogs() {
         String input = this.userInput.getText();
         DialogBox userDialog = new DialogBox(input, this.userImage, 50.0);
         DialogBox philDialog = new DialogBox(this.phil.getResponse(input), this.dukeImage, 50.0);

@@ -15,13 +15,13 @@
     <children>
         <TextField fx:id="userInput"
                    layoutY="558.0"
-                   onAction="#handleUserInput"
+                   onAction="#addInputAndOutputDialogs"
                    prefHeight="41.0" prefWidth="324.0"
                    AnchorPane.bottomAnchor="1.0" />
         <Button fx:id="sendButton"
                 layoutX="324.0" layoutY="558.0"
                 mnemonicParsing="false"
-                onMouseClicked="#handleUserInput"
+                onMouseClicked="#addInputAndOutputDialogs"
                 prefHeight="41.0" prefWidth="76.0"
                 text="Send" />
         <ScrollPane fx:id="scrollPane"
