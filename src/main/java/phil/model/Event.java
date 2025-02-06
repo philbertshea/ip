@@ -38,6 +38,11 @@ public class Event extends Task {
             this.toDate = toDate;
             this.toDateInDateTime = null;
         }
+        // Assert that either fromDate or fromDateInDateTime is not null
+        assert this.fromDateInDateTime != null || this.fromDate != null;
+
+        // Assert that either toDate or toDateInDateTime is not null
+        assert this.toDateInDateTime != null || this.toDate != null;
     }
 
     /**
