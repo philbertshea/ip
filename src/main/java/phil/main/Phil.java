@@ -9,7 +9,6 @@ import phil.storage.Storage;
  * and a function to get the response from parser based on user input.
  */
 public class Phil {
-
     private Parser parser;
 
     /**
@@ -36,6 +35,9 @@ public class Phil {
      * @return String response to be returned by parser.
      */
     public String getResponse(String input) {
+        // Assert parser is not null before accessing it.
+        assert this.parser != null;
+
         try {
             return this.parser.generateStringOutputFromInput(input);
         } catch (PhilException e) {

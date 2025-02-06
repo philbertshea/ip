@@ -31,6 +31,9 @@ public class Deadline extends Task {
             this.byDate = byDate;
             this.byDateInDateTime = null;
         }
+
+        // Assert that either byDate or byDateInDateTime is not null
+        assert this.byDateInDateTime != null || this.byDate != null;
     }
 
     /**
