@@ -22,7 +22,7 @@ public class InvalidCommandException extends PhilException {
                 + "'find <some search term>' to find a task by that search term. \n\n"
                 + "'new-note <some note>' to create a new note. \n\n"
                 + "'delete-note <some note index>' to delete a note. \n\n"
-                + "'view-note' to view a list of notes. \n\n"
+                + "'list-note' to view a list of notes. \n\n"
                 + "'bye' to end the conversation. \n\n");
     }
 }
