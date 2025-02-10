@@ -1,7 +1,8 @@
-Todo - X - hi
 Todo -   - read a new book
 Event -   - competition for sleeping - today - tomorrow
 Todo -   - do something today
 Todo -   - hi
 Todo -   - bye
-Deadline -   - hi - tomorrow
+Todo -   - hello
+Deadline -   - read - tuesday
+Event -   - hi - mon - tues

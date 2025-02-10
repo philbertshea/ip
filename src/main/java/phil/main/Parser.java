@@ -1,14 +1,20 @@
 package phil.main;
 
-import phil.exception.CommandType;
-import phil.exception.InvalidArgumentException;
+import phil.command.ByeCommand;
+import phil.command.DeadlineCommand;
+import phil.command.DeleteCommand;
+import phil.command.DeleteNoteCommand;
+import phil.command.EventCommand;
+import phil.command.FindCommand;
+import phil.command.ListCommand;
+import phil.command.ListNoteCommand;
+import phil.command.MarkCommand;
+import phil.command.NewNoteCommand;
+import phil.command.TodoCommand;
+import phil.command.UnmarkCommand;
 import phil.exception.InvalidCommandException;
 import phil.exception.PhilException;
-import phil.model.Note;
 import phil.model.TaskList;
-import phil.model.Todo;
-import phil.model.Event;
-import phil.model.Deadline;
 import phil.model.NoteList;
 import phil.storage.Storage;
 
@@ -92,90 +98,47 @@ public class Parser {
         int numNotes = this.noteList.getNumberOfNotes();
 
         if (input.equals("bye")) {
-            String output = "";
-            try {
-                this.storage.save(this.taskList, this.noteList);
-            } catch (Exception e) {
-                output += "Data not saved: " + e.getMessage() + "\n";
-            }
-            return output + "Bye. Hope to see you again soon.";
+            return new ByeCommand(this.taskList, this.noteList, this.storage).execute();
         } else if (matchesFirstArg(inputArgs, "list")) {
-            return this.taskList.toString();
+            return new ListCommand(this.taskList).execute();
         } else if (matchesFirstArg(inputArgs, "delete")) {
-            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks)) {
-                throw new InvalidArgumentException(CommandType.DELETE_TASK, numTasks);
-            } else {
-                int taskToRemove = Integer.parseInt(input.split(" ")[1]);
-                return this.taskList.deleteTask(taskToRemove);
-            }
+            return new DeleteCommand(inputArgs, this.taskList,
+                    isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks), numTasks)
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "mark")) {
-            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks)) {
-                throw new InvalidArgumentException(CommandType.MARK_DONE, numTasks);
-            } else {
-                int taskToMark = Integer.parseInt(input.split(" ")[1]);
-                return this.taskList.markTaskAsDone(taskToMark);
-            }
+            return new MarkCommand(inputArgs, this.taskList,
+                    isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks), numTasks)
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "unmark")) {
-            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks)) {
-                throw new InvalidArgumentException(CommandType.MARK_UNDONE, numTasks);
-            } else {
-                int taskToMark = Integer.parseInt(input.split(" ")[1]);
-                return this.taskList.markTaskAsNotDone(taskToMark);
-            }
+            return new UnmarkCommand(inputArgs, this.taskList,
+                    isInputInvalidForMarkUnmarkDelete(inputArgs, numTasks), numTasks)
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "todo")) {
-            if (isInputInvalidForFindAndTaskCreation(inputArgs, 2)) {
-                throw new InvalidArgumentException(CommandType.CREATE_TODO);
-            } else {
-                // Get the whole input except for the first word 'todo' as the task description
-                String description = String.join(" ", inputArgs.subList(1, inputArgs.size()));
-                return this.taskList.addTask(new Todo(description));
-            }
+            return new TodoCommand(inputArgs, this.taskList,
+                    isInputInvalidForFindAndTaskCreation(inputArgs, 2))
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "deadline")) {
-            if (isInputInvalidForFindAndTaskCreation(inputArgs, 4, "/by")) {
-                throw new InvalidArgumentException(CommandType.CREATE_DEADLINE);
-            } else {
-                int byIndex = inputArgs.indexOf("/by");
-                String description = String.join(" ", inputArgs.subList(1, byIndex));
-                String byDate = String.join(" ", inputArgs.subList(byIndex + 1, inputArgs.size()));
-                return this.taskList.addTask(new Deadline(description, byDate));
-            }
+            return new DeadlineCommand(inputArgs, this.taskList,
+                    isInputInvalidForFindAndTaskCreation(inputArgs, 4, "/by"))
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "event")) {
-            if (isInputInvalidForFindAndTaskCreation(inputArgs, 6, "/from", "/to")) {
-                throw new InvalidArgumentException(CommandType.CREATE_EVENT);
-            } else {
-                int fromIndex = inputArgs.indexOf("/from");
-                int toIndex = inputArgs.indexOf("/to");
-                String description = String.join(" ", inputArgs.subList(1, fromIndex));
-                String fromDate = String.join(" ", inputArgs.subList(fromIndex + 1, toIndex));
-                String toDate = String.join(" ", inputArgs.subList(toIndex + 1, inputArgs.size()));
-                return this.taskList.addTask(new Event(description, fromDate, toDate));
-            }
+            return new EventCommand(inputArgs, this.taskList,
+                    isInputInvalidForFindAndTaskCreation(inputArgs, 6, "/from", "/to"))
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "find")) {
-            if (isInputInvalidForFindAndTaskCreation(inputArgs, 2)) {
-                throw new InvalidArgumentException(CommandType.FIND_TASK);
-            } else {
-                // Get the whole input except for the first word 'find' as the task description
-                String searchTerm = String.join(" ", inputArgs.subList(1, inputArgs.size()));
-                return this.taskList.filteredTasksToString(searchTerm);
-            }
+            return new FindCommand(inputArgs, this.taskList,
+                    isInputInvalidForFindAndTaskCreation(inputArgs, 2))
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "new-note")) {
-            if (isInputInvalidForFindAndTaskCreation(inputArgs, 2)) {
-                throw new InvalidArgumentException(CommandType.CREATE_NOTE);
-            } else {
-                // Get the whole input except for the first word 'new-note' as the note
-                String note = String.join(" ", inputArgs.subList(1, inputArgs.size()));
-                return this.noteList.addNote(new Note(note));
-            }
+            return new NewNoteCommand(inputArgs, this.noteList,
+                    isInputInvalidForFindAndTaskCreation(inputArgs, 2))
+                    .execute();
         } else if (matchesFirstArg(inputArgs, "delete-note")) {
-            if (isInputInvalidForMarkUnmarkDelete(inputArgs, numNotes)) {
-                throw new InvalidArgumentException(CommandType.DELETE_NOTE, numNotes);
-            } else {
-                // Get the whole input except for the first word 'new-note' as the note
-                int noteToRemove = Integer.parseInt(input.split(" ")[1]);
-                return this.noteList.deleteNote(noteToRemove);
-            }
+            return new DeleteNoteCommand(inputArgs, this.noteList,
+                    isInputInvalidForMarkUnmarkDelete(inputArgs, numNotes), numNotes)
+                    .execute();
         } else if (input.equals("list-note")) {
-            return this.noteList.toString();
+            return new ListNoteCommand(this.noteList).execute();
         } else {
             throw new InvalidCommandException(input);
         }
