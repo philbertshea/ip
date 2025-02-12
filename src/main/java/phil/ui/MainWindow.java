@@ -27,8 +27,8 @@ public class MainWindow extends AnchorPane {
 
     private Phil phil;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/User.png"));
+    private Image philImage = new Image(this.getClass().getResourceAsStream("/images/Phil.png"));
 
     /**
      * Initialises the scrollpane to scroll to the height of the dialog container.
@@ -60,7 +60,7 @@ public class MainWindow extends AnchorPane {
     private void addInputAndOutputDialogs() {
         String input = this.userInput.getText();
         DialogBox userDialog = new DialogBox(input, this.userImage, 50.0);
-        DialogBox philDialog = new DialogBox(this.phil.getResponse(input), this.dukeImage, 50.0);
+        DialogBox philDialog = new DialogBox(this.phil.getResponse(input), this.philImage, 50.0);
         philDialog.flip();
 
         this.dialogContainer.getChildren().addAll(userDialog, philDialog);

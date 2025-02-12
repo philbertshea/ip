@@ -30,6 +30,7 @@ public class PhilMain extends Application {
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             loader.<MainWindow>getController().setPhil(this.phil);
+            stage.setTitle("Phil");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

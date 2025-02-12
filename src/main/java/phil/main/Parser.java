@@ -69,7 +69,8 @@ public class Parser {
      * @param requiredArgs varArgs for required args to check.
      * @return boolean representing if input is invalid.
      */
-    private boolean isInputInvalidForFindAndTaskCreation(List<String> inputArgs, int minimumNumberOfArgs, String... requiredArgs) {
+    private boolean isInputInvalidForFindAndTaskCreation(List<String> inputArgs,
+            int minimumNumberOfArgs, String... requiredArgs) {
         boolean hasMinNumberOfArgs = inputArgs.size() >= minimumNumberOfArgs;
         boolean hasRequiredArgs = true;
         for (String arg : requiredArgs) {
