@@ -8,7 +8,7 @@ import java.time.format.DateTimeParseException;
  * Represents a Deadline task which has a description and a by-date.
  */
 public class Deadline extends Task {
-    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("M/d/yy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
     private String byDate;
     private LocalDateTime byDateInDateTime;

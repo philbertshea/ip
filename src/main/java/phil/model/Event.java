@@ -8,7 +8,7 @@ import java.time.format.DateTimeParseException;
  * Represents a Event task which has a description and a from-date and an end-date.
  */
 public class Event extends Task {
-    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("MM/d/yyyy HHmm");
+    private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("M/d/yy HHmm");
     private static final DateTimeFormatter OUTPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM d, yyyy h.mma");
     private String fromDate;
     private String toDate;
