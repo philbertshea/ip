@@ -55,8 +55,12 @@ public class NoteList {
     public String toString() {
         StringBuilder listToPrint = new StringBuilder();
         listToPrint.append("Here are the Notes in your list: \n");
-        for (int i = 0; i < this.notes.size(); i++) {
+        for (int i = 0; i < this.getNumberOfNotes(); i++) {
             listToPrint.append((i + 1)).append(". ").append(this.notes.get(i).toString()).append("\n");
+        }
+        if (this.getNumberOfNotes() > 10) {
+            listToPrint.append("That's a lot of notes! Remember to discard what " +
+                    "you don't need using the `delete-note <index-of-note>` command.");
         }
         return listToPrint.toString();
     }
@@ -69,7 +73,7 @@ public class NoteList {
      */
     public String toLoadString() {
         StringBuilder listToPrint = new StringBuilder();
-        for (int i = 0; i < this.notes.size(); i++) {
+        for (int i = 0; i < this.getNumberOfNotes(); i++) {
             listToPrint.append(this.notes.get(i).toString()).append("\n");
         }
         return listToPrint.toString();
