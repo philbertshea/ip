@@ -108,12 +108,10 @@ public class TaskList {
     public String filteredTasksToString(String searchTerm) {
         StringBuilder listToPrint = new StringBuilder();
         listToPrint.append("Here are the matching tasks in your list: \n");
-        int count = 0;
         for (int i = 0; i < this.getNumberOfTasks(); i++) {
             Task task = this.listOfTasks.get(i);
             if (task.descContains(searchTerm)) {
-                count = count + 1;
-                listToPrint.append(count).append(". ").append(task.toString()).append("\n");
+                listToPrint.append(i+1).append(". ").append(task.toString()).append("\n");
             }
         }
         return listToPrint.toString();
