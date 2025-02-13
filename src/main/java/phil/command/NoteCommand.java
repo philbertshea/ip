@@ -11,6 +11,12 @@ public abstract class NoteCommand {
     private NoteList noteList;
     private boolean isInputInvalid;
 
+    /**
+     * Sets up the Task Command instance.
+     *
+     * @param noteList list of notes.
+     * @param isInputInvalid whether input to command is valid.
+     */
     public NoteCommand(NoteList noteList, boolean isInputInvalid) {
         this.noteList = noteList;
         this.isInputInvalid = isInputInvalid;
@@ -58,7 +64,7 @@ public abstract class NoteCommand {
      * Execute the command and returns the output string.
      *
      * @return String representing the output to be displayed by the chatbot
-     * in the form of a dialog.
+     *         in the form of a dialog.
      */
     public abstract String execute();
 }

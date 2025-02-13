@@ -1,8 +1,8 @@
 package phil.model;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 
 /**
@@ -62,5 +62,4 @@ public class DeadlineTest {
         deadline.markNotDone();
         assertEquals("Deadline -   - homework - 2/7/25 1000", deadline.toLoadString());
     }
-    
 }

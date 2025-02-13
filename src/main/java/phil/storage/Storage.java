@@ -1,18 +1,18 @@
 package phil.storage;
 
-import phil.model.Task;
-import phil.model.Todo;
-import phil.model.Deadline;
-import phil.model.Event;
-import phil.model.TaskList;
-import phil.model.NoteList;
-import phil.model.Note;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+
+import phil.model.Deadline;
+import phil.model.Event;
+import phil.model.Note;
+import phil.model.NoteList;
+import phil.model.Task;
+import phil.model.TaskList;
+import phil.model.Todo;
 
 /**
  * Represents the storage element which allows the loading and storing of data to disk.

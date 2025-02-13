@@ -25,6 +25,11 @@ public class ByeCommand {
         this.storage = storage;
     }
 
+    /**
+     * Executes the command and closes the window.
+     *
+     * @return String representing the output of the execution.
+     */
     public String execute() {
         String output = "";
         try {

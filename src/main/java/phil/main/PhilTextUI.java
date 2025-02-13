@@ -1,9 +1,9 @@
 package phil.main;
 
-import phil.ui.Ui;
-import phil.model.TaskList;
 import phil.model.NoteList;
+import phil.model.TaskList;
 import phil.storage.Storage;
+import phil.ui.Ui;
 
 /**
  * Represents Main Class of Phil (TextUI version) to be executed for running the bot.

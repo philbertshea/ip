@@ -84,8 +84,8 @@ public class TaskList {
             listToPrint.append((i + 1)).append(". ").append(this.listOfTasks.get(i).toString()).append("\n");
         }
         if (this.getNumberOfTasks() > 10) {
-            listToPrint.append("That's a lot of tasks! Remember to clear tasks " +
-                    "you are done with using the `delete <index-of-task>` command.");
+            listToPrint.append("That's a lot of tasks! Remember to clear tasks "
+                    + "you are done with using the `delete <index-of-task>` command.");
         }
         return listToPrint.toString();
     }
@@ -111,7 +111,7 @@ public class TaskList {
         for (int i = 0; i < this.getNumberOfTasks(); i++) {
             Task task = this.listOfTasks.get(i);
             if (task.descContains(searchTerm)) {
-                listToPrint.append(i+1).append(". ").append(task.toString()).append("\n");
+                listToPrint.append(i + 1).append(". ").append(task.toString()).append("\n");
             }
         }
         return listToPrint.toString();

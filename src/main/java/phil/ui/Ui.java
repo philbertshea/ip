@@ -1,9 +1,9 @@
 package phil.ui;
 
+import java.util.Scanner;
+
 import phil.exception.PhilException;
 import phil.main.Parser;
-
-import java.util.Scanner;
 
 /**
  * Represents the text-based user interface for interacting with the chatbot.

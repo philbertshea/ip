@@ -1,8 +1,8 @@
 package phil.main;
 
 import phil.exception.PhilException;
-import phil.model.TaskList;
 import phil.model.NoteList;
+import phil.model.TaskList;
 import phil.storage.Storage;
 
 /**

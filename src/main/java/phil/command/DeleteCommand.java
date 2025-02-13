@@ -1,10 +1,11 @@
 package phil.command;
 
+import java.util.List;
+
 import phil.exception.CommandType;
 import phil.exception.InvalidArgumentException;
 import phil.model.TaskList;
 
-import java.util.List;
 
 /**
  * Represents the command to delete a task.
@@ -31,7 +32,7 @@ public class DeleteCommand extends TaskCommand {
      * Executes the command and returns the output string.
      *
      * @return String representing the output to be displayed by the chatbot
-     * in the form of a dialog.
+     *         in the form of a dialog.
      */
     @Override
     public String execute() throws InvalidArgumentException {

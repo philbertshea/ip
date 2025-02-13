@@ -1,5 +1,8 @@
 package phil.main;
 
+import java.util.Arrays;
+import java.util.List;
+
 import phil.command.ByeCommand;
 import phil.command.DeadlineCommand;
 import phil.command.DeleteCommand;
@@ -14,12 +17,10 @@ import phil.command.TodoCommand;
 import phil.command.UnmarkCommand;
 import phil.exception.InvalidCommandException;
 import phil.exception.PhilException;
-import phil.model.TaskList;
 import phil.model.NoteList;
+import phil.model.TaskList;
 import phil.storage.Storage;
 
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Represents the Parser which contains logic to process input strings passed in.

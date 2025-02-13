@@ -1,8 +1,9 @@
 package phil.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -43,11 +44,14 @@ public class EventTest {
     @Test
     public void toString_newEventWithDateTime_correctStringOutput() {
         Event event = new Event("book sharing session", "2/7/25 1000", "2/7/25 1500");
-        assertEquals("[E][ ] book sharing session (from: Feb 7, 2025 10.00AM to: Feb 7, 2025 3.00PM)", event.toString());
+        assertEquals("[E][ ] book sharing session (from: Feb 7, 2025 10.00AM to: Feb 7, 2025 3.00PM)",
+                event.toString());
         event.markDone();
-        assertEquals("[E][X] book sharing session (from: Feb 7, 2025 10.00AM to: Feb 7, 2025 3.00PM)", event.toString());
+        assertEquals("[E][X] book sharing session (from: Feb 7, 2025 10.00AM to: Feb 7, 2025 3.00PM)",
+                event.toString());
         event.markNotDone();
-        assertEquals("[E][ ] book sharing session (from: Feb 7, 2025 10.00AM to: Feb 7, 2025 3.00PM)", event.toString());
+        assertEquals("[E][ ] book sharing session (from: Feb 7, 2025 10.00AM to: Feb 7, 2025 3.00PM)",
+                event.toString());
     }
 
     /**

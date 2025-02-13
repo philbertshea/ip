@@ -59,8 +59,8 @@ public class NoteList {
             listToPrint.append((i + 1)).append(". ").append(this.notes.get(i).toString()).append("\n");
         }
         if (this.getNumberOfNotes() > 10) {
-            listToPrint.append("That's a lot of notes! Remember to discard what " +
-                    "you don't need using the `delete-note <index-of-note>` command.");
+            listToPrint.append("That's a lot of notes! Remember to discard what "
+                    + "you don't need using the `delete-note <index-of-note>` command.");
         }
         return listToPrint.toString();
     }
