@@ -80,8 +80,12 @@ public class TaskList {
     public String toString() {
         StringBuilder listToPrint = new StringBuilder();
         listToPrint.append("Here are the tasks in your list: \n");
-        for (int i = 0; i < this.listOfTasks.size(); i++) {
+        for (int i = 0; i < this.getNumberOfTasks(); i++) {
             listToPrint.append((i + 1)).append(". ").append(this.listOfTasks.get(i).toString()).append("\n");
+        }
+        if (this.getNumberOfTasks() > 10) {
+            listToPrint.append("That's a lot of tasks! Remember to clear tasks " +
+                    "you are done with using the `delete <index-of-task>` command.");
         }
         return listToPrint.toString();
     }
@@ -105,7 +109,7 @@ public class TaskList {
         StringBuilder listToPrint = new StringBuilder();
         listToPrint.append("Here are the matching tasks in your list: \n");
         int count = 0;
-        for (int i = 0; i < this.listOfTasks.size(); i++) {
+        for (int i = 0; i < this.getNumberOfTasks(); i++) {
             Task task = this.listOfTasks.get(i);
             if (task.descContains(searchTerm)) {
                 count = count + 1;
