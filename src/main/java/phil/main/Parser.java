@@ -51,13 +51,13 @@ public class Parser {
      * @return boolean representing if input is invalid.
      */
     private boolean isInputInvalidForMarkUnmarkDelete(List<String> inputArgs, int numTasks) {
-        if (inputArgs.size() < 2) {
+        if (inputArgs.size() != 2) {
             return true;
+        } else if (!inputArgs.get(1).matches("\\d+")) {
+            return true;
+        } else {
+            return Integer.parseInt(inputArgs.get(1)) > numTasks;
         }
-        boolean hasTwoArgs = inputArgs.size() == 2;
-        boolean secondArgIsInteger = inputArgs.get(1).matches("\\d+");
-        boolean secondArgIsValidTaskNumber = Integer.parseInt(inputArgs.get(1)) <= numTasks;
-        return !hasTwoArgs || !secondArgIsInteger || !secondArgIsValidTaskNumber;
     }
 
     /**

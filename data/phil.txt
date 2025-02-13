@@ -1,5 +1,4 @@
 Todo -   - read a new book
-Event -   - competition for sleeping - today - tomorrow
 Todo -   - do something today
 Todo -   - hi
 Todo -   - bye
@@ -10,3 +9,4 @@ Event -   - tutorial - 2/5/25 1000 - 05/07/2025 1100
 Event -   - tutorial - 2/5/25 1100 - tomorrow
 Event -   - tutorial - 2/7/25 1100 - tomorrow
 Event -   - tutorial - 2/07/2025 1100 - 02/7/2025 1100
+Event -   - break - 2/7/25 1000 - 2/10/25 1100

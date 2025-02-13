@@ -23,7 +23,7 @@ public class InvalidArgumentException extends PhilException {
                                   + " 'read' with a deadline of 'Tuesday'.";
         } else if (commandType == CommandType.CREATE_EVENT) {
             this.explainedUsage = "An Event task requires a description AND a from date, "
-                                  + "specified as a string after '/by'."
+                                  + "specified as a string after '/from'."
                                   + "\n And a to date, specified as a string after '/to'."
                                   + "\n For example, 'event reading /from Monday /to Tuesday' "
                                   + " creates the event 'reading'\n from 'Monday' to 'Tuesday'.";
