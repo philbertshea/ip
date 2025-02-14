@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import phil.ui.MainWindow;
@@ -26,11 +27,13 @@ public class PhilMain extends Application {
     public void start(Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader(PhilMain.class.getResource("/view/MainWindow.fxml"));
+            Image philImage = new Image(this.getClass().getResourceAsStream("/images/Phil.png"));
             AnchorPane ap = loader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
             loader.<MainWindow>getController().setPhil(this.phil);
             stage.setTitle("Phil");
+            stage.getIcons().add(philImage);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
