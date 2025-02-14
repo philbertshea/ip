@@ -27,7 +27,6 @@ public class Deadline extends Task {
             this.byDate = null;
             this.byDateInDateTime = byDateInDateTime;
         } catch (DateTimeParseException e) {
-            System.out.println(byDate + " Not parsable");
             this.byDate = byDate;
             this.byDateInDateTime = null;
         }
