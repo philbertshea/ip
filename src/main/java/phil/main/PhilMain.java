@@ -18,7 +18,7 @@ public class PhilMain extends Application {
     private Phil phil = new Phil();
 
     /**
-     * Load the MainWindow.fxml file as an AnchorPane, attach the Scene to the Stage
+     * Loads the MainWindow.fxml file as an AnchorPane, attach the Scene to the Stage
      * and Start showing the Stage to initialise the App.
      *
      * @param stage Stage to set up scene on, and show for the Chatbot Graphic User Interface.

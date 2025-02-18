@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents a Event task which has a description and a from-date and an end-date.
+ * Represents an Event task which has a description and a from-date and an end-date.
  */
 public class Event extends Task {
     private static final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("M/d/yy HHmm");

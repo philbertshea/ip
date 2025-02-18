@@ -30,7 +30,7 @@ public class Phil {
     }
 
     /**
-     * Return response from parser based on input.
+     * Returns the response from parser based on input.
      *
      * @param input String passed in as input.
      * @return String response to be returned by parser.

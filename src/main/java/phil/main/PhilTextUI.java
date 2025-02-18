@@ -11,7 +11,7 @@ import phil.ui.Ui;
 public class PhilTextUI {
 
     /**
-     * Main Method to be executed to initialise the chatbot.
+     * Initialises and executes the chatbot's TextUi version.
      */
     public static void main(String[] args) {
 
